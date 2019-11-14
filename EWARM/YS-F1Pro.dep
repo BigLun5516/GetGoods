@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
     <fileVersion>4</fileVersion>
-    <fileChecksum>1924814681</fileChecksum>
+    <fileChecksum>2722125954</fileChecksum>
     <configuration>
         <name>YS-F1Pro</name>
         <outputs>
@@ -290,6 +290,10 @@
             <file>$PROJ_DIR$\..\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_rcc.c</file>
             <file>$PROJ_DIR$\..\Inc\bsp\motor.h</file>
             <file>$PROJ_DIR$\YS-F1Pro\Obj\YS-F1Pro.pbd</file>
+            <file>$PROJ_DIR$\..\Src\bsp\relay.c</file>
+            <file>$PROJ_DIR$\..\Inc\bsp\relay.h</file>
+            <file>$PROJ_DIR$\YS-F1Pro\Obj\relay.xcl</file>
+            <file>$PROJ_DIR$\YS-F1Pro\Obj\relay.o</file>
             <file>$PROJ_DIR$\YS-F1Pro\Obj\motor.xcl</file>
             <file>$PROJ_DIR$\..\Src\bsp\motor.c</file>
             <file>$PROJ_DIR$\YS-F1Pro\Obj\motor.o</file>
@@ -313,7 +317,7 @@
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 134 131 105 149 35 178 55 37 172 108 111 180 177 92 204 179 107 109 181 165 167 97 162 110 155 175 122 168 171 96 115 176 116 91 193 164 138 154 184 118 161 215 104 100 166 194 226 187 196 158 170 173 174 99 191 213 203 205 163 202 183 233 185 259 113 211 283 246 238 229</file>
+                    <file> 134 131 105 149 35 178 55 37 172 108 111 180 177 92 204 179 107 109 181 165 167 97 162 110 155 175 122 168 171 96 115 176 116 91 193 164 138 154 184 118 161 215 104 100 166 194 226 187 196 158 170 173 174 99 191 213 203 205 163 202 183 233 185 259 113 211 283 246 238 229 286</file>
                 </tool>
             </inputs>
         </file>
@@ -944,7 +948,7 @@
             <inputs>
                 <tool>
                     <name>ILINK</name>
-                    <file> 220 150 137 201 48 287 59 45 43 32 52 77 53 75 54 130 124 49 31 33 148 46 51 141 44 79 56 47 34 142 93 38 57 28 120 58 50 102 103 42 143 121 94 40 101 39 95 119 114 29 128 112 41 30 159 189 98 186</file>
+                    <file> 220 150 137 201 48 291 288 59 45 43 32 52 77 53 75 54 130 124 49 31 33 148 46 51 141 44 79 56 47 34 142 93 38 57 28 120 58 50 102 103 42 143 121 94 40 101 39 95 119 114 29 128 112 41 30 159 189 98 186</file>
                 </tool>
             </inputs>
         </file>
@@ -1501,15 +1505,34 @@
             </inputs>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\Src\bsp\relay.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 288</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 287</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 286 134 131 105 149 35 178 55 37 172 108 111 180 177 92 204 179 107 109 181 165 167 97 162 110 155 175 122 168 171 96 115 176 116 91 193 164 138 154 184 118 161 215 104 100 166 194 226 187 196 158 170 173 174 99 191 213 203 205 163 202 183 233 185 259</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\Src\bsp\motor.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 287</file>
+                    <file> 291</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 285</file>
+                    <file> 289</file>
                 </tool>
             </outputs>
             <inputs>

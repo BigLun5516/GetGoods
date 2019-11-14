@@ -1202,6 +1202,9 @@
             <file>
                 <name>$PROJ_DIR$\..\Src\bsp\motor.c</name>
             </file>
+            <file>
+                <name>$PROJ_DIR$\..\Src\bsp\relay.c</name>
+            </file>
         </group>
         <group>
             <name>EWARM</name>

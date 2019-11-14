@@ -19,6 +19,7 @@
 #include "usart/bsp_debug_usart.h"
 #include "string.h"
 #include "ASDA_B2/bsp_ASDA_B2.h"
+#include "relay.h"
 /* 私有类型定义 --------------------------------------------------------------*/
 /* 私有宏定义 ----------------------------------------------------------------*/
 /* 私有变量 ------------------------------------------------------------------*/
@@ -84,6 +85,9 @@ int main(void)
 
   // /* 初始化串口并配置串口中断优先级 */
   MX_DEBUG_USART_Init();
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // 大电机 线性模组
   // RS485_USARTx_Init();
 
   // HAL_UART_Receive_DMA(&husartx_rs485,(uint8_t*)&husart_debug.Instance->DR, 1);// Data Direction: 485 --> USART1
@@ -96,14 +100,20 @@ int main(void)
   // __HAL_DMA_DISABLE_IT(&hdma_rs485_rx, DMA_IT_HT);
   // __HAL_DMA_DISABLE_IT(&hdma_rs485_rx, DMA_IT_TE);
 
+  // /* 初始化ASDA-B2参数,配置为速度模式*/
+  // ASDAB2_Init();
+  // /* 设置SP3速度值为600*0.1r/min  60r/min */
+  // SetSpeed(REG_SP3,100);
+  // /* 启动伺服 */
+  // StartServo();
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // 激光测试
-  LASER_Init();
-  HAL_UART_Transmit(&husart_debug, "start1\r\n", 8, 1000);
-  HAL_UART_Transmit(&husart_laser1, "iFACM:0", 7, 1000);
-  HAL_UART_Transmit(&husart_laser1, "iHALT", 5, 1000);
-  HAL_UART_Transmit(&husart_laser1, "iFACM:0", 7, 1000);
-  HAL_UART_Receive_IT(&husart_laser1, &aRxBuffer_laser1, 1);
+  // LASER_Init();
+  // HAL_UART_Transmit(&husart_debug, "start1\r\n", 8, 1000);
+  // HAL_UART_Transmit(&husart_laser1, "iFACM:0", 7, 1000);
+  // HAL_UART_Transmit(&husart_laser1, "iHALT", 5, 1000);
+  // HAL_UART_Transmit(&husart_laser1, "iFACM:0", 7, 1000);
+  // HAL_UART_Receive_IT(&husart_laser1, &aRxBuffer_laser1, 1);
   // HAL_UART_Receive_IT(&husart_laser2, &aRxBuffer_laser2, 1);
 
 
@@ -121,12 +131,19 @@ int main(void)
   // motor_set_velocity(-500);
   // motor_stop();
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  // /* 初始化ASDA-B2参数,配置为速度模式*/
-  // ASDAB2_Init();
-  // /* 设置SP3速度值为600*0.1r/min  60r/min */
-  // SetSpeed(REG_SP3,100);
-  // /* 启动伺服 */
-  // StartServo();
+  // 继电器测试
+  RELAY_Init();
+  RELAY1_ON;
+  RELAY1_OFF;
+  RELAY2_ON;
+  RELAY2_OFF;
+  RELAY3_ON;
+  RELAY3_OFF;
+  RELAY4_ON;
+  RELAY4_OFF;
+  RELAY5_ON;
+  RELAY5_OFF;
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////
   /* 无限循环 */
   while (1)
   {
