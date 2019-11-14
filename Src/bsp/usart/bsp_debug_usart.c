@@ -108,6 +108,44 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
 
     __HAL_LINKDMA(huart,hdmarx,hdma_rs485_rx);
   }
+
+  // 激光1
+  if(huart->Instance == LASER1_USARTx)
+  {
+    /* 串口外设时钟使能 */
+    LASER1_USART_RCC_CLK_ENABLE();
+    LASER1_USARTx_GPIO_ClK_ENABLE();
+  
+    /* 串口外设功能GPIO配置 */
+    GPIO_InitStruct.Pin = LASER1_USARTx_Tx_GPIO_PIN;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+    HAL_GPIO_Init(LASER1_USARTx_Tx_GPIO, &GPIO_InitStruct);
+
+    GPIO_InitStruct.Pin = LASER1_USARTx_Rx_GPIO_PIN;
+    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    HAL_GPIO_Init(LASER1_USARTx_Rx_GPIO, &GPIO_InitStruct);
+  }
+
+  // 激光2
+  if(huart->Instance == LASER2_USARTx)
+  {
+    /* 串口外设时钟使能 */
+    LASER2_USART_RCC_CLK_ENABLE();
+    LASER2_USARTx_GPIO_ClK_ENABLE();
+  
+    /* 串口外设功能GPIO配置 */
+    GPIO_InitStruct.Pin = LASER2_USARTx_Tx_GPIO_PIN;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+    HAL_GPIO_Init(LASER2_USARTx_Tx_GPIO, &GPIO_InitStruct);
+
+    GPIO_InitStruct.Pin = LASER2_USARTx_Rx_GPIO_PIN;
+    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    HAL_GPIO_Init(LASER2_USARTx_Rx_GPIO, &GPIO_InitStruct);
+  }
 }
 
 /**

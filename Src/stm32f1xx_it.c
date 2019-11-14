@@ -176,5 +176,27 @@ void RS485_DMAx_CHANNELn_IRQHANDLER()
 {
   HAL_DMA_IRQHandler(&hdma_rs485_rx);
 }
+
+void USART2_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART1_IRQn 0 */
+  
+  /* USER CODE END USART1_IRQn 0 */
+  HAL_UART_IRQHandler(&husart_laser1);
+  /* USER CODE BEGIN USART1_IRQn 1 */
+// HAL_UART_Receive_IT(&husart1,aRxBuffer[0],8);
+  /* USER CODE END USART1_IRQn 1 */
+}
+
+void UART4_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART1_IRQn 0 */
+  
+  /* USER CODE END USART1_IRQn 0 */
+  HAL_UART_IRQHandler(&husart_laser2);
+  /* USER CODE BEGIN USART1_IRQn 1 */
+// HAL_UART_Receive_IT(&husart1,aRxBuffer[0],8);
+  /* USER CODE END USART1_IRQn 1 */
+}
 /* USER CODE END 1 */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

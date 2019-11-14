@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"D:\IAR Systems\Embedded Workbench 7.2\common\bin\cspybat" -f "E:\Desktop\台达伺服驱动器\程序\YSF1_HAL-000. 伺服驱动器速度模式\EWARM\settings\YS-F1Pro.YS-F1Pro.general.xcl" --backend -f "E:\Desktop\台达伺服驱动器\程序\YSF1_HAL-000. 伺服驱动器速度模式\EWARM\settings\YS-F1Pro.YS-F1Pro.driver.xcl" 
+"D:\IAR\common\bin\cspybat" -f "E:\Code\IAR_Projects\GetGoods\EWARM\settings\YS-F1Pro.YS-F1Pro.general.xcl" --backend -f "E:\Code\IAR_Projects\GetGoods\EWARM\settings\YS-F1Pro.YS-F1Pro.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"D:\IAR Systems\Embedded Workbench 7.2\common\bin\cspybat" -f "E:\Desktop\台达伺服驱动器\程序\YSF1_HAL-000. 伺服驱动器速度模式\EWARM\settings\YS-F1Pro.YS-F1Pro.general.xcl" "--debug_file=%~1" --backend -f "E:\Desktop\台达伺服驱动器\程序\YSF1_HAL-000. 伺服驱动器速度模式\EWARM\settings\YS-F1Pro.YS-F1Pro.driver.xcl" 
+"D:\IAR\common\bin\cspybat" -f "E:\Code\IAR_Projects\GetGoods\EWARM\settings\YS-F1Pro.YS-F1Pro.general.xcl" "--debug_file=%~1" --backend -f "E:\Code\IAR_Projects\GetGoods\EWARM\settings\YS-F1Pro.YS-F1Pro.driver.xcl" 
 
 @echo off 
 :end

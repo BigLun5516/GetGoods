@@ -1,14 +1,14 @@
-"D:\IAR Systems\Embedded Workbench 7.2\arm\bin\armproc.dll" 
+"D:\IAR\arm\bin\armproc.dll" 
 
-"D:\IAR Systems\Embedded Workbench 7.2\arm\bin\armstlink2.dll" 
+"D:\IAR\arm\bin\armstlink2.dll" 
 
-"E:\Desktop\台达伺服驱动器\程序\YSF1_HAL-000. 伺服驱动器速度模式\EWARM\YS-F1Pro\Exe\YS-F1Pro.out" 
+"E:\Code\IAR_Projects\GetGoods\EWARM\YS-F1Pro\Exe\YS-F1Pro.out" 
 
---plugin "D:\IAR Systems\Embedded Workbench 7.2\arm\bin\armbat.dll" 
+--plugin="D:\IAR\arm\bin\armbat.dll" 
 
---device_macro "D:\IAR Systems\Embedded Workbench 7.2\arm\config\debugger\ST\STM32F1xx_XL.dmac" 
+--device_macro="D:\IAR\arm\config\debugger\ST\STM32F1xx.dmac" 
 
---flash_loader "D:\IAR Systems\Embedded Workbench 7.2\arm\config\flashloader\ST\FlashSTM32F10xxE.board" 
+--flash_loader="D:\IAR\arm\config\flashloader\ST\FlashSTM32F10xxC.board" 
 
 
 

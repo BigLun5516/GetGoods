@@ -24,6 +24,8 @@
 /* 私有变量 ------------------------------------------------------------------*/
 __IO uint8_t Rx_Buf[50];       //接收数据缓存
 
+uint8_t aRxBuffer_laser1;
+uint8_t aRxBuffer_laser2;
 /* 扩展变量 ------------------------------------------------------------------*/
 /* 私有函数原形 --------------------------------------------------------------*/
 /* 函数体 --------------------------------------------------------------------*/
@@ -92,32 +94,43 @@ int main(void)
   
   __HAL_DMA_DISABLE_IT(&hdma_rs485_rx, DMA_IT_HT);
   __HAL_DMA_DISABLE_IT(&hdma_rs485_rx, DMA_IT_TE);
+
+
+///////////////////////////
+  // 激光测试
+  LASER_Init();
+  HAL_UART_Transmit(&husart_laser1, "iFACM:0", 7, 1000);
+  HAL_UART_Receive_IT(&husart_laser1, &aRxBuffer_laser1, 1);
+  HAL_UART_Receive_IT(&husart_laser2, &aRxBuffer_laser2, 1);
   
-  /* 初始化ASDA-B2参数,配置为速度模式*/
-  ASDAB2_Init();          
-  /* 设置SP3速度值为600*0.1r/min  60r/min */
-  SetSpeed(REG_SP3,100);      
-  /* 启动伺服 */
-  StartServo();          
+  HAL_UART_Transmit(&husart_debug, "iFACM:0", 7, 1000);
+  
+///////////////  
+  // /* 初始化ASDA-B2参数,配置为速度模式*/
+  // ASDAB2_Init();          
+  // /* 设置SP3速度值为600*0.1r/min  60r/min */
+  // SetSpeed(REG_SP3,100);      
+  // /* 启动伺服 */
+  // StartServo();          
   /* 无限循环 */
   while (1)
   {
-    uint16_t j = 100;
-    for(i=0; i<20;i++)
-    {
-      HAL_Delay(500);          
-      SetSpeed(REG_SP3,(j+=500)*dir);   // 设置为反转
-    }
-    for(i=0; i<20;i++)
-    {
-      HAL_Delay(500);          
-      SetSpeed(REG_SP3,(j-=500)*dir);   // 设置为反转
-    }
-    StopServo();              // 停止伺服
-    HAL_Delay(2000);      
-    dir = -dir;
-    SetSpeed(REG_SP3,j*dir);
-    StartServo();             // 重新启动伺服电机
+    // uint16_t j = 100;
+    // for(i=0; i<20;i++)
+    // {
+    //   HAL_Delay(500);          
+    //   SetSpeed(REG_SP3,(j+=500)*dir);   // 设置为反转
+    // }
+    // for(i=0; i<20;i++)
+    // {
+    //   HAL_Delay(500);          
+    //   SetSpeed(REG_SP3,(j-=500)*dir);   // 设置为反转
+    // }
+    // StopServo();              // 停止伺服
+    // HAL_Delay(2000);      
+    // dir = -dir;
+    // SetSpeed(REG_SP3,j*dir);
+    // StartServo();             // 重新启动伺服电机
   }
 }
 
@@ -148,6 +161,32 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle)
       }
     }
     else i = 0;
+  }
+
+  if(UartHandle->Instance == LASER1_USARTx){
+    if(flag1_laser1 == 0){
+      if(aRxBuffer_laser1 == 'D'){
+        flag1_laser1 = 1;
+      }
+    }else if(flag1_laser1 == 1 && flag2_laser1 == 0){
+      if(aRxBuffer_laser1 == '='){
+        flag2_laser1 = 1;
+      }else{
+        flag1_laser1 = 0;
+      }
+    }else if(flag1_laser1 == 1 && flag2_laser1 ==1 && aRxBuffer_laser1 == 'm'){
+      flag1_laser1 = flag2_laser1 = 0;
+      HAL_UART_Transmit(&husart_debug, buf_laser1, count_laser1, 1000);
+      HAL_UART_Transmit(&husart_debug, "\r\n", 2, 1000);
+      distance_laser1 = atof(buf_laser1);
+      count_laser1 = 0;
+    }else if(count_laser1 > 5){
+      count_laser1 = flag1_laser1 = flag2_laser1 = 0;
+    }else{
+      buf_laser1[count_laser1++] = aRxBuffer_laser1;
+    }
+    
+    HAL_UART_Receive_IT(&husart_laser1,&aRxBuffer_laser1,1);
   }
 }
 
