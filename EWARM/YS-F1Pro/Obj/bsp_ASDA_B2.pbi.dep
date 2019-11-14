@@ -63,4 +63,5 @@ bsp_ASDA_B2.pbi: \
   E:\Code\IAR_Projects\GetGoods\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc\stm32f1xx_hal_hcd.h \
   E:\Code\IAR_Projects\GetGoods\EWARM\..\Inc\bsp\usart/bsp_debug_usart.h \
   E:\Code\IAR_Projects\GetGoods\EWARM\..\Inc\bsp\laser.h \
+  E:\Code\IAR_Projects\GetGoods\EWARM\..\Inc\bsp\motor.h \
   D:\IAR\arm\inc\c\string.h D:\IAR\arm\inc\c\DLib_Product_string.h

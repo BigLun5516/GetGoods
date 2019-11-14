@@ -23,6 +23,7 @@ rule browsedata
 build bsp_ASDA_B2.pbi : index bsp_ASDA_B2.xcl
 build bsp_debug_usart.pbi : index bsp_debug_usart.xcl
 build laser.pbi : index laser.xcl
+build motor.pbi : index motor.xcl
 build main.pbi : index main.xcl
 build stm32f1xx_assert.pbi : index stm32f1xx_assert.xcl
 build stm32f1xx_hal_msp.pbi : index stm32f1xx_hal_msp.xcl
@@ -71,14 +72,14 @@ build stm32f1xx_hal_wwdg.pbi : index stm32f1xx_hal_wwdg.xcl
 build stm32f1xx_ll_fsmc.pbi : index stm32f1xx_ll_fsmc.xcl
 build stm32f1xx_ll_sdmmc.pbi : index stm32f1xx_ll_sdmmc.xcl
 build stm32f1xx_ll_usb.pbi : index stm32f1xx_ll_usb.xcl
-build YS-F1Pro_part0.pbi : link bsp_ASDA_B2.pbi bsp_debug_usart.pbi laser.pbi main.pbi stm32f1xx_assert.pbi stm32f1xx_hal_msp.pbi stm32f1xx_it.pbi
-build YS-F1Pro_part1.pbi : link system_stm32f1xx.pbi stm32f1xx_hal.pbi stm32f1xx_hal_adc.pbi stm32f1xx_hal_adc_ex.pbi stm32f1xx_hal_can.pbi stm32f1xx_hal_cec.pbi stm32f1xx_hal_cortex.pbi
-build YS-F1Pro_part2.pbi : link stm32f1xx_hal_crc.pbi stm32f1xx_hal_dac.pbi stm32f1xx_hal_dac_ex.pbi stm32f1xx_hal_dma.pbi stm32f1xx_hal_eth.pbi stm32f1xx_hal_flash.pbi stm32f1xx_hal_flash_ex.pbi
-build YS-F1Pro_part3.pbi : link stm32f1xx_hal_gpio.pbi stm32f1xx_hal_gpio_ex.pbi stm32f1xx_hal_hcd.pbi stm32f1xx_hal_i2c.pbi stm32f1xx_hal_i2s.pbi stm32f1xx_hal_irda.pbi stm32f1xx_hal_iwdg.pbi
-build YS-F1Pro_part4.pbi : link stm32f1xx_hal_nand.pbi stm32f1xx_hal_nor.pbi stm32f1xx_hal_pccard.pbi stm32f1xx_hal_pcd.pbi stm32f1xx_hal_pcd_ex.pbi stm32f1xx_hal_pwr.pbi stm32f1xx_hal_rcc.pbi
-build YS-F1Pro_part5.pbi : link stm32f1xx_hal_rcc_ex.pbi stm32f1xx_hal_rtc.pbi stm32f1xx_hal_rtc_ex.pbi stm32f1xx_hal_sd.pbi stm32f1xx_hal_smartcard.pbi stm32f1xx_hal_spi.pbi stm32f1xx_hal_spi_ex.pbi
-build YS-F1Pro_part6.pbi : link stm32f1xx_hal_sram.pbi stm32f1xx_hal_tim.pbi stm32f1xx_hal_tim_ex.pbi stm32f1xx_hal_uart.pbi stm32f1xx_hal_usart.pbi stm32f1xx_hal_wwdg.pbi stm32f1xx_ll_fsmc.pbi
-build YS-F1Pro_part7.pbi : link stm32f1xx_ll_sdmmc.pbi stm32f1xx_ll_usb.pbi
+build YS-F1Pro_part0.pbi : link bsp_ASDA_B2.pbi bsp_debug_usart.pbi laser.pbi motor.pbi main.pbi stm32f1xx_assert.pbi stm32f1xx_hal_msp.pbi
+build YS-F1Pro_part1.pbi : link stm32f1xx_it.pbi system_stm32f1xx.pbi stm32f1xx_hal.pbi stm32f1xx_hal_adc.pbi stm32f1xx_hal_adc_ex.pbi stm32f1xx_hal_can.pbi stm32f1xx_hal_cec.pbi
+build YS-F1Pro_part2.pbi : link stm32f1xx_hal_cortex.pbi stm32f1xx_hal_crc.pbi stm32f1xx_hal_dac.pbi stm32f1xx_hal_dac_ex.pbi stm32f1xx_hal_dma.pbi stm32f1xx_hal_eth.pbi stm32f1xx_hal_flash.pbi
+build YS-F1Pro_part3.pbi : link stm32f1xx_hal_flash_ex.pbi stm32f1xx_hal_gpio.pbi stm32f1xx_hal_gpio_ex.pbi stm32f1xx_hal_hcd.pbi stm32f1xx_hal_i2c.pbi stm32f1xx_hal_i2s.pbi stm32f1xx_hal_irda.pbi
+build YS-F1Pro_part4.pbi : link stm32f1xx_hal_iwdg.pbi stm32f1xx_hal_nand.pbi stm32f1xx_hal_nor.pbi stm32f1xx_hal_pccard.pbi stm32f1xx_hal_pcd.pbi stm32f1xx_hal_pcd_ex.pbi stm32f1xx_hal_pwr.pbi
+build YS-F1Pro_part5.pbi : link stm32f1xx_hal_rcc.pbi stm32f1xx_hal_rcc_ex.pbi stm32f1xx_hal_rtc.pbi stm32f1xx_hal_rtc_ex.pbi stm32f1xx_hal_sd.pbi stm32f1xx_hal_smartcard.pbi stm32f1xx_hal_spi.pbi
+build YS-F1Pro_part6.pbi : link stm32f1xx_hal_spi_ex.pbi stm32f1xx_hal_sram.pbi stm32f1xx_hal_tim.pbi stm32f1xx_hal_tim_ex.pbi stm32f1xx_hal_uart.pbi stm32f1xx_hal_usart.pbi stm32f1xx_hal_wwdg.pbi
+build YS-F1Pro_part7.pbi : link stm32f1xx_ll_fsmc.pbi stm32f1xx_ll_sdmmc.pbi stm32f1xx_ll_usb.pbi
 build YS-F1Pro.pbd : link YS-F1Pro_part0.pbi YS-F1Pro_part1.pbi YS-F1Pro_part2.pbi YS-F1Pro_part3.pbi YS-F1Pro_part4.pbi YS-F1Pro_part5.pbi YS-F1Pro_part6.pbi YS-F1Pro_part7.pbi
 build YS-F1Pro.pbw : browsedata YS-F1Pro.pbd
 

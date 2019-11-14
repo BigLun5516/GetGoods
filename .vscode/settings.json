@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "bsp_debug_usart.h": "c"
+        "bsp_debug_usart.h": "c",
+        "bsp_asda_b2.h": "c"
     }
 }

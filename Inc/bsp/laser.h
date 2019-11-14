@@ -8,7 +8,7 @@
 
 // 激光1
 #define LASER1_USARTx                                 USART2
-#define LASER1_USARTx_BAUDRATE                        115200
+#define LASER1_USARTx_BAUDRATE                        38400
 #define LASER1_USART_RCC_CLK_ENABLE()                 __HAL_RCC_USART2_CLK_ENABLE()
 #define LASER1_USART_RCC_CLK_DISABLE()                __HAL_RCC_USART2_CLK_DISABLE()
 
@@ -23,7 +23,7 @@
 
 // 激光2
 #define LASER2_USARTx                                 UART4
-#define LASER2_USARTx_BAUDRATE                        115200
+#define LASER2_USARTx_BAUDRATE                        38400
 #define LASER2_USART_RCC_CLK_ENABLE()                 __HAL_RCC_UART4_CLK_ENABLE()
 #define LASER2_USART_RCC_CLK_DISABLE()                __HAL_RCC_UART4_CLK_DISABLE()
 

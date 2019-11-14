@@ -9,6 +9,7 @@
                 "path": [
                     "E:\\Code\\IAR_Projects\\GetGoods\\Src\\bsp\\ASDA_B2\\",
                     "E:\\Code\\IAR_Projects\\GetGoods\\Src\\bsp\\usart\\",
+                    "E:\\Code\\IAR_Projects\\GetGoods\\Src\\bsp\\",
                     "E:\\Code\\IAR_Projects\\GetGoods\\Drivers\\CMSIS\\Device\\ST\\STM32F1xx\\Source\\Templates\\iar\\",
                     "E:\\Code\\IAR_Projects\\GetGoods\\Src\\",
                     "E:\\Code\\IAR_Projects\\GetGoods\\Drivers\\CMSIS\\Device\\ST\\STM32F1xx\\Source\\Templates\\",

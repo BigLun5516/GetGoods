@@ -61,4 +61,5 @@ stm32f1xx_it.pbi: E:\Code\IAR_Projects\GetGoods\Src\stm32f1xx_it.c \
   E:\Code\IAR_Projects\GetGoods\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc\stm32f1xx_hal_hcd.h \
   E:\Code\IAR_Projects\GetGoods\EWARM/../Inc\stm32f1xx_it.h \
   E:\Code\IAR_Projects\GetGoods\EWARM\..\Inc\bsp\usart/bsp_debug_usart.h \
-  E:\Code\IAR_Projects\GetGoods\EWARM\..\Inc\bsp\laser.h
+  E:\Code\IAR_Projects\GetGoods\EWARM\..\Inc\bsp\laser.h \
+  E:\Code\IAR_Projects\GetGoods\EWARM\..\Inc\bsp\motor.h

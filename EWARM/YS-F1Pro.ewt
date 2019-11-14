@@ -1199,6 +1199,9 @@
             <file>
                 <name>$PROJ_DIR$\..\Src\bsp\laser.c</name>
             </file>
+            <file>
+                <name>$PROJ_DIR$\..\Src\bsp\motor.c</name>
+            </file>
         </group>
         <group>
             <name>EWARM</name>
