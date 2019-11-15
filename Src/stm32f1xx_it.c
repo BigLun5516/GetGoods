@@ -162,16 +162,6 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /* USER CODE BEGIN 1 */
-void USARTx_DMAx_CHANNELn_IRQHANDLER(void)
-{
-  /* USER CODE BEGIN DMA1_Channel4_IRQn 0 */
-
-  /* USER CODE END DMA1_Channel4_IRQn 0 */
-  HAL_DMA_IRQHandler(&hdma_debug_rx);
-  /* USER CODE BEGIN DMA1_Channel4_IRQn 1 */
-
-  /* USER CODE END DMA1_Channel4_IRQn 1 */
-}
 void RS485_DMAx_CHANNELn_IRQHANDLER()
 {
   HAL_DMA_IRQHandler(&hdma_rs485_rx);
@@ -198,16 +188,6 @@ void USART2_IRQHandler(void)
   /* USER CODE END USART1_IRQn 1 */
 }
 
-void USART3_IRQHandler(void)
-{
-  /* USER CODE BEGIN USART1_IRQn 0 */
-  
-  /* USER CODE END USART1_IRQn 0 */
-  HAL_UART_IRQHandler(&husart_motor);
-  /* USER CODE BEGIN USART1_IRQn 1 */
-// HAL_UART_Receive_IT(&husart1,aRxBuffer[0],8);
-  /* USER CODE END USART1_IRQn 1 */
-}
 void UART4_IRQHandler(void)
 {
   /* USER CODE BEGIN USART1_IRQn 0 */
@@ -218,5 +198,17 @@ void UART4_IRQHandler(void)
 // HAL_UART_Receive_IT(&husart1,aRxBuffer[0],8);
   /* USER CODE END USART1_IRQn 1 */
 }
+
+void UART5_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART1_IRQn 0 */
+  
+  /* USER CODE END USART1_IRQn 0 */
+  HAL_UART_IRQHandler(&husart_motor);
+  /* USER CODE BEGIN USART1_IRQn 1 */
+// HAL_UART_Receive_IT(&husart1,aRxBuffer[0],8);
+  /* USER CODE END USART1_IRQn 1 */
+}
 /* USER CODE END 1 */
+
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

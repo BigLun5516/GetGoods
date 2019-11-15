@@ -23,11 +23,6 @@
 #define USARTx_IRQHANDLER                            USART1_IRQHandler
 #define DEBUG_USART_IRQn                             USART1_IRQn
 
-// 串口DMA相关
-#define USARTx_DMAx_CHANNELn                         DMA1_Channel5
-#define USARTx_RCC_DMAx_CLK_ENABLE()                 __HAL_RCC_DMA1_CLK_ENABLE()
-#define USARTx_DMAx_CHANNELn_IRQn                    DMA1_Channel5_IRQn
-#define USARTx_DMAx_CHANNELn_IRQHANDLER              DMA1_Channel5_IRQHandler
 
 /*-----------------------------------------------------------*/
 #define RS485_USARTx                                 USART3
@@ -43,11 +38,6 @@
 #define RS485_IRQHANDLER                            USART3_IRQHandler
 #define RS485_USARTX_IRQn                            USART3_IRQn
 
-#define RS485_REDE_GPIO_ClK_ENABLE()                 __HAL_RCC_GPIOB_CLK_ENABLE()
-#define RS485_REDE_PORT                              GPIOB
-#define RS485_REDE_PIN                               GPIO_PIN_2
-#define RS485_RX_MODE()                              HAL_GPIO_WritePin(RS485_REDE_PORT,RS485_REDE_PIN,GPIO_PIN_RESET)
-#define RS485_TX_MODE()                              HAL_GPIO_WritePin(RS485_REDE_PORT,RS485_REDE_PIN,GPIO_PIN_SET)
 
 // 串口DMA相关
 #define RS485_DMAx_CHANNELn                          DMA1_Channel3

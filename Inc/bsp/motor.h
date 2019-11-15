@@ -3,19 +3,19 @@
 
 #include "stm32f1xx_hal.h"
 
-#define MOTOR_USARTx                                 USART3
+#define MOTOR_USARTx                                 UART5
 #define MOTOR_USARTx_BAUDRATE                        115200
-#define MOTOR_USART_RCC_CLK_ENABLE()                 __HAL_RCC_USART3_CLK_ENABLE()
-#define MOTOR_USART_RCC_CLK_DISABLE()                __HAL_RCC_USART3_CLK_DISABLE()
+#define MOTOR_USART_RCC_CLK_ENABLE()                 __HAL_RCC_UART5_CLK_ENABLE()
+#define MOTOR_USART_RCC_CLK_DISABLE()                __HAL_RCC_UART5_CLK_DISABLE()
 
-#define MOTOR_USARTx_GPIO_ClK_ENABLE()               __HAL_RCC_GPIOB_CLK_ENABLE()
-#define MOTOR_USARTx_Tx_GPIO_PIN                     GPIO_PIN_10
-#define MOTOR_USARTx_Tx_GPIO                         GPIOB
-#define MOTOR_USARTx_Rx_GPIO_PIN                     GPIO_PIN_11
-#define MOTOR_USARTx_Rx_GPIO                         GPIOB
+#define MOTOR_USARTx_GPIO_ClK_ENABLE()               {__HAL_RCC_GPIOC_CLK_ENABLE();__HAL_RCC_GPIOD_CLK_ENABLE();}
+#define MOTOR_USARTx_Tx_GPIO_PIN                     GPIO_PIN_12
+#define MOTOR_USARTx_Tx_GPIO                         GPIOC
+#define MOTOR_USARTx_Rx_GPIO_PIN                     GPIO_PIN_2
+#define MOTOR_USARTx_Rx_GPIO                         GPIOD
 
-#define MOTOR_USARTx_IRQHANDLER                      USART3_IRQHandler
-#define MOTOR_USARTx_IRQn                            USART3_IRQn
+#define MOTOR_USARTx_IRQHANDLER                      UART5_IRQHandler
+#define MOTOR_USARTx_IRQn                            UART5_IRQn
 
 
 /* 扩展变量 ------------------------------------------------------------------*/

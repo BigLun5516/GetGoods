@@ -43,7 +43,6 @@ void HAL_UART_MspInit(UART_HandleTypeDef *huart)
   {
     /* 串口外设时钟使能 */
     DEBUG_USART_RCC_CLK_ENABLE();
-    USARTx_RCC_DMAx_CLK_ENABLE();
 
     /* 串口外设功能GPIO配置 */
     GPIO_InitStruct.Pin = DEBUG_USARTx_Tx_GPIO_PIN;
@@ -55,19 +54,6 @@ void HAL_UART_MspInit(UART_HandleTypeDef *huart)
     GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(DEBUG_USARTx_Rx_GPIO, &GPIO_InitStruct);
-
-    /* 初始化DMA外设 */
-    hdma_debug_rx.Instance = USARTx_DMAx_CHANNELn;
-    hdma_debug_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
-    hdma_debug_rx.Init.PeriphInc = DMA_PINC_DISABLE;
-    hdma_debug_rx.Init.MemInc = DMA_MINC_DISABLE;
-    hdma_debug_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
-    hdma_debug_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
-    hdma_debug_rx.Init.Mode = DMA_CIRCULAR;
-    hdma_debug_rx.Init.Priority = DMA_PRIORITY_HIGH;
-    HAL_DMA_Init(&hdma_debug_rx);
-
-    __HAL_LINKDMA(huart, hdmarx, hdma_debug_rx);
   }
 
   // 大电机伺服
@@ -75,7 +61,6 @@ void HAL_UART_MspInit(UART_HandleTypeDef *huart)
   {
     /* 串口引脚时钟使能 */
     RS485_USARTx_GPIO_ClK_ENABLE();
-    RS485_REDE_GPIO_ClK_ENABLE();
     RS485_RCC_DMAx_CLK_ENABLE();
 
     /* 串口外设功能GPIO配置 */
@@ -89,12 +74,6 @@ void HAL_UART_MspInit(UART_HandleTypeDef *huart)
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(RS485_USARTx_PORT, &GPIO_InitStruct);
 
-    /* SP3485E发送数据使能控制引脚初始化 */
-    HAL_GPIO_WritePin(RS485_REDE_PORT, RS485_REDE_PIN, GPIO_PIN_RESET);
-    GPIO_InitStruct.Pin = RS485_REDE_PIN;
-    GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
-    HAL_GPIO_Init(RS485_REDE_PORT, &GPIO_InitStruct);
 
     /* 初始化DMA外设 */
     hdma_rs485_rx.Instance = RS485_DMAx_CHANNELn;
@@ -250,34 +229,8 @@ void MX_DEBUG_USART_Init(void)
 
   HAL_NVIC_SetPriority(DEBUG_USART_IRQn, 1, 0);
   HAL_NVIC_EnableIRQ(DEBUG_USART_IRQn);
-  HAL_NVIC_SetPriority(USARTx_DMAx_CHANNELn_IRQn, 1, 1);
-  HAL_NVIC_EnableIRQ(USARTx_DMAx_CHANNELn_IRQn);
 }
 
-/**
-  * 函数功能: 重定向c库函数printf到DEBUG_USARTx
-  * 输入参数: 无
-  * 返 回 值: 无
-  * 说    明：无
-  */
-int fputc(int ch, FILE *f)
-{
-  HAL_UART_Transmit(&husart_debug, (uint8_t *)&ch, 1, 0xffff);
-  return ch;
-}
-
-/**
-  * 函数功能: 重定向c库函数getchar,scanf到DEBUG_USARTx
-  * 输入参数: 无
-  * 返 回 值: 无
-  * 说    明：无
-  */
-int fgetc(FILE *f)
-{
-  uint8_t ch = 0;
-  HAL_UART_Receive(&husart_debug, &ch, 1, 0xffff);
-  return ch;
-}
 
 /**
   * 函数功能: 串口参数配置.

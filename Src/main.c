@@ -20,6 +20,7 @@
 #include "string.h"
 #include "ASDA_B2/bsp_ASDA_B2.h"
 #include "relay.h"
+// #include "stdlib.h" // 没它 atof  
 /* 私有类型定义 --------------------------------------------------------------*/
 /* 私有宏定义 ----------------------------------------------------------------*/
 /* 私有变量 ------------------------------------------------------------------*/
@@ -76,7 +77,7 @@ void SystemClock_Config(void)
   */
 int main(void)
 {
-  uint8_t i = 0;
+  uint8_t i = 0,test=0;
   int8_t dir = 1;
   /* 复位所有外设，初始化Flash接口和系统滴答定时器 */
   HAL_Init();
@@ -90,13 +91,9 @@ int main(void)
   // 大电机 线性模组
   // RS485_USARTx_Init();
 
-  // HAL_UART_Receive_DMA(&husartx_rs485,(uint8_t*)&husart_debug.Instance->DR, 1);// Data Direction: 485 --> USART1
-  // HAL_UART_Receive_DMA(&husart_debug,(uint8_t*)&husartx_rs485.Instance->DR, 1);// Data Direction: USART1 --> 485
+  // HAL_UART_Receive_DMA(&husartx_rs485,&test, 1);// Data Direction: 485 --> USART1
 
   // /* Disable the Half transfer complete interrupt */
-  // __HAL_DMA_DISABLE_IT(&hdma_debug_rx, DMA_IT_HT);
-  // __HAL_DMA_DISABLE_IT(&hdma_debug_rx, DMA_IT_TE);
-
   // __HAL_DMA_DISABLE_IT(&hdma_rs485_rx, DMA_IT_HT);
   // __HAL_DMA_DISABLE_IT(&hdma_rs485_rx, DMA_IT_TE);
 
@@ -111,10 +108,11 @@ int main(void)
   // LASER_Init();
   // HAL_UART_Transmit(&husart_debug, "start1\r\n", 8, 1000);
   // HAL_UART_Transmit(&husart_laser1, "iFACM:0", 7, 1000);
-  // HAL_UART_Transmit(&husart_laser1, "iHALT", 5, 1000);
-  // HAL_UART_Transmit(&husart_laser1, "iFACM:0", 7, 1000);
+  // // HAL_UART_Transmit(&husart_laser1, "iHALT", 5, 1000);
+  // // HAL_UART_Transmit(&husart_laser1, "iFACM:0", 7, 1000);
+  // HAL_Delay(500);
   // HAL_UART_Receive_IT(&husart_laser1, &aRxBuffer_laser1, 1);
-  // HAL_UART_Receive_IT(&husart_laser2, &aRxBuffer_laser2, 1);
+  // // HAL_UART_Receive_IT(&husart_laser2, &aRxBuffer_laser2, 1);
 
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -127,26 +125,31 @@ int main(void)
   // motor_entry_velocity_mode();
   // motor_set_velocity(500);
   // motor_recieve_info();
+  // HAL_Delay(3000);
   // motor_stop_recieve_info();
-  // motor_set_velocity(-500);
+  // HAL_Delay(3000);
+  // // motor_set_velocity(-500);
   // motor_stop();
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // 继电器测试
-  RELAY_Init();
-  RELAY1_ON;
-  RELAY1_OFF;
-  RELAY2_ON;
-  RELAY2_OFF;
-  RELAY3_ON;
-  RELAY3_OFF;
-  RELAY4_ON;
-  RELAY4_OFF;
-  RELAY5_ON;
-  RELAY5_OFF;
+  // RELAY_Init();
+  // RELAY1_ON;
+  // RELAY1_OFF;
+  // RELAY2_ON;
+  // RELAY2_OFF;
+  // RELAY3_ON;
+  // RELAY3_OFF;
+  // RELAY4_ON;
+  // RELAY4_OFF;
+  // RELAY5_ON;
+  // RELAY5_OFF;
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
   /* 无限循环 */
+  static char dis[10]; // 测试用==================================
   while (1)
   {
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // 大电机
     // uint16_t j = 100;
     // for(i=0; i<20;i++)
     // {
@@ -163,6 +166,11 @@ int main(void)
     // dir = -dir;
     // SetSpeed(REG_SP3,j*dir);
     // StartServo();             // 重新启动伺服电机
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // 激光
+    // sprintf(dis, "%f", distance_laser1);
+    // HAL_UART_Transmit(&husart_debug, dis, 5, 1000);
+    // HAL_Delay(20);
   }
 }
 
@@ -224,9 +232,9 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle)
     {
       flag1_laser1 = flag2_laser1 = 0;
 
-      // 发给串口1 测试用
-      HAL_UART_Transmit(&husart_debug, buf_laser1, count_laser1, 1000);
-      HAL_UART_Transmit(&husart_debug, "\r\n", 2, 1000);
+      // // 发给串口1 测试用
+      // HAL_UART_Transmit(&husart_debug, buf_laser1, count_laser1, 1000);
+      // HAL_UART_Transmit(&husart_debug, "\r\n", 2, 1000);
 
       distance_laser1 = atof(buf_laser1);
       count_laser1 = 0;
@@ -248,5 +256,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle)
     HAL_UART_Receive_IT(&husart_motor, &aRxBuffer_motor, 1);
   }
 }
+
+
 
 /******************* (C) COPYRIGHT 2015-2020 硬石嵌入式开发团队 *****END OF FILE****/
