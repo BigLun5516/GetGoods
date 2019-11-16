@@ -59,4 +59,6 @@ laser.pbi: E:\Code\IAR_Projects\GetGoods\Src\bsp\laser.c \
   E:\Code\IAR_Projects\GetGoods\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc\stm32f1xx_hal_pcd.h \
   E:\Code\IAR_Projects\GetGoods\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h \
   E:\Code\IAR_Projects\GetGoods\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h \
-  E:\Code\IAR_Projects\GetGoods\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc\stm32f1xx_hal_hcd.h
+  E:\Code\IAR_Projects\GetGoods\EWARM/../Drivers/STM32F1xx_HAL_Driver/Inc\stm32f1xx_hal_hcd.h \
+  D:\IAR\arm\inc\c\stdlib.h D:\IAR\arm\inc\c\DLib_Product_stdlib.h \
+  D:\IAR\arm\inc\c\string.h D:\IAR\arm\inc\c\DLib_Product_string.h

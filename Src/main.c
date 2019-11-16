@@ -93,10 +93,12 @@ int main(void)
     // 激光测试
     LASER_Init();
     HAL_UART_Transmit(&husart_debug, "start1\r\n", 8, 1000);
-    // HAL_UART_Transmit(&husart_laser1, "iFACM:0", 7, 1000);
-    HAL_UART_Transmit(&husart_laser2, "iFACM:0", 7, 1000);
-    // HAL_UART_Receive_IT(&husart_laser1, &aRxBuffer_laser1, 1); // 激光1的串口 开中断
-    HAL_UART_Receive_IT(&husart_laser2, &aRxBuffer_laser2, 1); // 激光2的串口 开中断
+    laser_start_measure(LASER1);
+    
+
+    // laser_start_measure(LASER2);
+    HAL_UART_Receive_IT(&husart_laser1, &aRxBuffer_laser1, 1); // 激光1的串口 开中断
+    // HAL_UART_Receive_IT(&husart_laser2, &aRxBuffer_laser2, 1); // 激光2的串口 开中断
     HAL_Delay(500);
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -152,7 +154,8 @@ int main(void)
         // StartServo();             // 重新启动伺服电机
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 激光
-        sprintf(dis, "%.3f", distance_laser2);
+        sprintf(dis, "%.3f", distance_laser1);
+        // sprintf(dis, "%.3f", distance_laser2);
         HAL_UART_Transmit(&husart_debug, dis, 5, 1000);
         HAL_UART_Transmit(&husart_debug, "\r\n", 2, 1000);
         HAL_Delay(20);

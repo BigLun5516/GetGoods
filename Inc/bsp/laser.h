@@ -5,6 +5,7 @@
 
 #define LASER1 1
 #define LASER2 2
+#define MAX_RECV_LEN 100
 
 // 激光1
 #define LASER1_USARTx                                 USART2
@@ -59,5 +60,8 @@ extern uint8_t count_laser2;
 void LASER_Init();
 
 float getDistance(uint8_t LASER);
-
+void laser_start_measure(uint8_t);
+void laser_stop_measure(uint8_t);
+void laser_set_range(uint8_t LASER, uint32_t range);
+uint8_t laser_send_cmd(UART_HandleTypeDef *husart_laser, uint8_t *cmd, uint8_t *ack, uint16_t waittime);
 #endif
