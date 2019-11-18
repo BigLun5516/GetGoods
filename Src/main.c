@@ -93,7 +93,7 @@ int main(void)
     // º§π‚≤‚ ‘
     LASER_Init();
     HAL_UART_Transmit(&husart_debug, "start1\r\n", 8, 1000);
-    laser_start_measure(LASER1);
+    laser_start_measure(LASER1, 2);
     
 
     // laser_start_measure(LASER2);

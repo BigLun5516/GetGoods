@@ -352,7 +352,7 @@
                 <RecentlyUsedMenus>1</RecentlyUsedMenus>
                 <MenuShadows>1</MenuShadows>
                 <ShowAllMenusAfterDelay>1</ShowAllMenusAfterDelay>
-                <CommandsUsage>CC0100000800108600007F0000000F810000010000000E810000030000001F81000010000000148600001B000000118600001E000000468100001800000060860000E9000000</CommandsUsage>
+                <CommandsUsage>650200000900138600000600000010860000A70000000F810000010000001F810000170000000E81000003000000148600002B000000118600002C000000468100001B000000608600002C010000</CommandsUsage>
             </MFCToolBarParameters>
             <CommandManager>
                 <CommandsWithoutImages>0000</CommandsWithoutImages>
@@ -1049,6 +1049,8 @@
                     <item>buf_laser1</item>
                     <item>distance_laser2</item>
                     <item>buf_laser2</item>
+                    <item>rx_buf</item>
+                    <item>cmd</item>
                     <item></item>
                 </expressions>
                 <col-names>

@@ -81,15 +81,21 @@ float getDistance(uint8_t LASER)
 }
 
 // 开始测量
-void laser_start_measure(uint8_t LASER)
+// frequence 为0、1或2
+// 0： 10hz
+// 1： 20hz
+// 2： 30hz
+void laser_start_measure(uint8_t LASER, uint8_t frequence)
 {
+    uint8_t cmd[10] = "iFACM:";
+    cmd[6] = '0' + frequence;
     if (LASER == LASER1)
     {
-        HAL_UART_Transmit(&husart_laser1, "iFACM:0", 7, 1000);
+        HAL_UART_Transmit(&husart_laser1, cmd, 7, 1000);
     }
     else if (LASER == LASER2)
     {
-        HAL_UART_Transmit(&husart_laser2, "iFACM:0", 7, 1000);
+        HAL_UART_Transmit(&husart_laser2, cmd, 7, 1000);
     }
 }
 
