@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V8.40.2.214/W32 for ARM                  18/Nov/2019  15:31:43
+# IAR ELF Linker V8.40.2.214/W32 for ARM                  18/Nov/2019  15:44:20
 # Copyright 2007-2019 IAR Systems AB.
 #
 #    Output file  =
@@ -8,7 +8,7 @@
 #    Map file     =
 #        E:\Code\IAR_Projects\GetGoods\EWARM\YS-F1Pro\List\YS-F1Pro.map
 #    Command line =
-#        -f C:\Users\15538\AppData\Local\Temp\EWE73E.tmp
+#        -f C:\Users\15538\AppData\Local\Temp\EW72B6.tmp
 #        (E:\Code\IAR_Projects\GetGoods\EWARM\YS-F1Pro\Obj\bsp_ASDA_B2.o
 #        E:\Code\IAR_Projects\GetGoods\EWARM\YS-F1Pro\Obj\bsp_debug_usart.o
 #        E:\Code\IAR_Projects\GetGoods\EWARM\YS-F1Pro\Obj\laser.o
@@ -110,7 +110,7 @@ initialize by copy { rw };
   .intvec            ro code   0x800'0000   0x130  startup_stm32f103xe.o [1]
                              - 0x800'0130   0x130
 
-"P1":                                      0x5527
+"P1":                                      0x5533
   .text              ro code   0x800'0130   0xfc6  xprintffull_nomb.o [2]
   .text              ro code   0x800'10f6    0x3a  zero_init3.o [4]
   .text              ro code   0x800'1130    0x16  strchr.o [4]
@@ -155,43 +155,40 @@ initialize by copy { rw };
   .text              ro code   0x800'3f24   0x348  main.o [1]
   .text              ro code   0x800'426c   0x288  stm32f1xx_hal_gpio.o [1]
   .text              ro code   0x800'44f4    0x24  stm32f1xx_hal.o [1]
-  .text              ro code   0x800'4518   0x298  laser.o [1]
-  .text              ro code   0x800'47b0    0x48  FltToDbl.o [3]
-  .text              ro code   0x800'47f8    0x40  sprintf.o [2]
-  .text              ro code   0x800'4838   0x412  strto64.o [3]
-  .text              ro code   0x800'4c4c    0x68  DblToFlt.o [3]
-  .text              ro code   0x800'4cb4    0x60  stm32f1xx_hal_msp.o [1]
-  .text              ro code   0x800'4d14    0x66  ABImemset.o [4]
-  .text              ro code   0x800'4d7a    0x2c  strstr.o [2]
-  .text              ro code   0x800'4da6   0x122  iar_Stopfx.o [2]
-  .text              ro code   0x800'4ec8   0x1b8  iar_Stoflt.o [2]
-  .text              ro code   0x800'5080   0x208  iar_Stoxflt.o [2]
-  .text              ro code   0x800'5288    0x14  isspace.o [2]
-  .text              ro code   0x800'529c    0x14  isalpha.o [2]
-  .text              ro code   0x800'52b0    0x78  lz77_init_single.o [4]
-  .text              ro code   0x800'5328    0x60  stm32f1xx_it.o [1]
-  .text              ro code   0x800'5388    0x10  stm32f1xx_hal.o [1]
-  .text              ro code   0x800'5398    0x58  system_stm32f1xx.o [1]
-  .rodata            const     0x800'53f0    0x48  strto64.o [3]
-  .text              ro code   0x800'5438    0x28  data_init.o [4]
-  .iar.init_table    const     0x800'5460    0x20  - Linker created -
-  .text              ro code   0x800'5480    0x1e  cmain.o [4]
-  .text              ro code   0x800'549e     0x4  low_level_init.o [2]
-  .text              ro code   0x800'54a2     0x4  exit.o [2]
-  .text              ro code   0x800'54a8     0xa  cexit.o [4]
-  .rodata            const     0x800'54b4    0x14  laser.o [1]
-  .rodata            const     0x800'54c8    0x10  stm32f1xx_hal_rcc.o [1]
-  .rodata            const     0x800'54d8    0x10  stm32f1xx_hal_rcc.o [1]
-  .text              ro code   0x800'54e8    0x10  startup_stm32f103xe.o [1]
-  .rodata            const     0x800'54f8     0xc  laser.o [1]
-  .rodata            const     0x800'5504     0xc  main.o [1]
-  .text              ro code   0x800'5510     0xc  cstartup_M.o [4]
-  .rodata            const     0x800'551c     0x8  laser.o [1]
-  .rodata            const     0x800'5524     0x8  main.o [1]
-  .rodata            const     0x800'552c     0x8  xprintffull_nomb.o [2]
-  .text              ro code   0x800'5534     0x4  startup_stm32f103xe.o [1]
-  .text              ro code   0x800'5538     0x4  startup_stm32f103xe.o [1]
-  .text              ro code   0x800'553c     0x4  startup_stm32f103xe.o [1]
+  .text              ro code   0x800'4518   0x2a4  laser.o [1]
+  .text              ro code   0x800'47bc    0x48  FltToDbl.o [3]
+  .text              ro code   0x800'4804    0x40  sprintf.o [2]
+  .text              ro code   0x800'4844   0x412  strto64.o [3]
+  .text              ro code   0x800'4c58    0x68  DblToFlt.o [3]
+  .text              ro code   0x800'4cc0    0x60  stm32f1xx_hal_msp.o [1]
+  .text              ro code   0x800'4d20    0x66  ABImemset.o [4]
+  .text              ro code   0x800'4d86    0x2c  strstr.o [2]
+  .text              ro code   0x800'4db2   0x122  iar_Stopfx.o [2]
+  .text              ro code   0x800'4ed4   0x1b8  iar_Stoflt.o [2]
+  .text              ro code   0x800'508c   0x208  iar_Stoxflt.o [2]
+  .text              ro code   0x800'5294    0x14  isspace.o [2]
+  .text              ro code   0x800'52a8    0x14  isalpha.o [2]
+  .text              ro code   0x800'52bc    0x78  lz77_init_single.o [4]
+  .text              ro code   0x800'5334    0x60  stm32f1xx_it.o [1]
+  .text              ro code   0x800'5394    0x10  stm32f1xx_hal.o [1]
+  .text              ro code   0x800'53a4    0x58  system_stm32f1xx.o [1]
+  .rodata            const     0x800'53fc    0x14  laser.o [1]
+  .rodata            const     0x800'5410    0x48  strto64.o [3]
+  .text              ro code   0x800'5458    0x28  data_init.o [4]
+  .iar.init_table    const     0x800'5480    0x20  - Linker created -
+  .text              ro code   0x800'54a0    0x1e  cmain.o [4]
+  .text              ro code   0x800'54be     0x4  low_level_init.o [2]
+  .text              ro code   0x800'54c2     0x4  exit.o [2]
+  .text              ro code   0x800'54c8     0xa  cexit.o [4]
+  .rodata            const     0x800'54d4    0x10  stm32f1xx_hal_rcc.o [1]
+  .rodata            const     0x800'54e4    0x10  stm32f1xx_hal_rcc.o [1]
+  .text              ro code   0x800'54f4    0x10  startup_stm32f103xe.o [1]
+  .rodata            const     0x800'5504     0xc  laser.o [1]
+  .rodata            const     0x800'5510     0xc  main.o [1]
+  .text              ro code   0x800'551c     0xc  cstartup_M.o [4]
+  .rodata            const     0x800'5528     0x8  laser.o [1]
+  .rodata            const     0x800'5530     0x8  main.o [1]
+  .rodata            const     0x800'5538     0x8  xprintffull_nomb.o [2]
   .text              ro code   0x800'5540     0x4  startup_stm32f103xe.o [1]
   .text              ro code   0x800'5544     0x4  startup_stm32f103xe.o [1]
   .text              ro code   0x800'5548     0x4  startup_stm32f103xe.o [1]
@@ -246,10 +243,13 @@ initialize by copy { rw };
   .text              ro code   0x800'560c     0x4  startup_stm32f103xe.o [1]
   .text              ro code   0x800'5610     0x4  startup_stm32f103xe.o [1]
   .text              ro code   0x800'5614     0x4  startup_stm32f103xe.o [1]
-  .rodata            const     0x800'5618     0x0  zero_init3.o [4]
-  .rodata            const     0x800'5618     0x0  lz77_init_single.o [4]
-  Initializer bytes  const     0x800'5618    0x3f  <for P2-1>
-                             - 0x800'5657  0x5527
+  .text              ro code   0x800'5618     0x4  startup_stm32f103xe.o [1]
+  .text              ro code   0x800'561c     0x4  startup_stm32f103xe.o [1]
+  .text              ro code   0x800'5620     0x4  startup_stm32f103xe.o [1]
+  .rodata            const     0x800'5624     0x0  zero_init3.o [4]
+  .rodata            const     0x800'5624     0x0  lz77_init_single.o [4]
+  Initializer bytes  const     0x800'5624    0x3f  <for P2-1>
+                             - 0x800'5663  0x5533
 
 "P2", part 1 of 3:                           0x8d
   P2-1                        0x2000'0000    0x8d  <Init block>
@@ -298,7 +298,7 @@ Unused ranges:
 
          From           To      Size
          ----           --      ----
-   0x800'5657   0x803'ffff  0x3'a9a9
+   0x800'5663   0x803'ffff  0x3'a99d
   0x2000'008d  0x2000'008f       0x3
   0x2000'1280  0x2000'bfff    0xad80
 
@@ -315,7 +315,7 @@ Zero (__iar_zero_init3)
 
 Copy/lz77 (__iar_lz77_init_single3)
     1 source range, total size 0x3f (44% of destination):
-           0x800'5618   0x3f
+           0x800'5624   0x3f
     1 destination range, total size 0x8d:
           0x2000'0000   0x8d
 
@@ -334,7 +334,7 @@ command line/config:
 E:\Code\IAR_Projects\GetGoods\EWARM\YS-F1Pro\Obj: [1]
     bsp_ASDA_B2.o                          1        1
     bsp_debug_usart.o           620               184
-    laser.o                     664       40      166
+    laser.o                     676       40      166
     main.o                      840       20       73
     motor.o                                        64
     startup_stm32f103xe.o       548
@@ -348,7 +348,7 @@ E:\Code\IAR_Projects\GetGoods\EWARM\YS-F1Pro\Obj: [1]
     stm32f1xx_it.o               96
     system_stm32f1xx.o           88        1        4
     -------------------------------------------------
-    Total:                   11'374       96      496
+    Total:                   11'386       96      496
 
 dl7M_tlf.a: [2]
     XShttio.o                    12        4        8
@@ -414,7 +414,7 @@ shb_l.a: [5]
     Gaps                         27        2
     Linker created                        32    4'096
 -----------------------------------------------------
-    Grand Total:             21'827      276    4'732
+    Grand Total:             21'839      276    4'732
 
 
 *******************************************************************************
@@ -423,25 +423,25 @@ shb_l.a: [5]
 
 Entry                       Address   Size  Type      Object
 -----                       -------   ----  ----      ------
-.iar.init_table$$Base    0x800'5460          --   Gb  - Linker created -
-.iar.init_table$$Limit   0x800'5480          --   Gb  - Linker created -
-?main                    0x800'5481         Code  Gb  cmain.o [4]
-BusFault_Handler         0x800'532f    0x2  Code  Gb  stm32f1xx_it.o [1]
+.iar.init_table$$Base    0x800'5480          --   Gb  - Linker created -
+.iar.init_table$$Limit   0x800'54a0          --   Gb  - Linker created -
+?main                    0x800'54a1         Code  Gb  cmain.o [4]
+BusFault_Handler         0x800'533b    0x2  Code  Gb  stm32f1xx_it.o [1]
 CSTACK$$Base            0x2000'0280          --   Gb  - Linker created -
 CSTACK$$Limit           0x2000'1280          --   Gb  - Linker created -
 DMA1_Channel3_IRQHandler
-                         0x800'5341    0xa  Code  Gb  stm32f1xx_it.o [1]
-DebugMon_Handler         0x800'5333    0x2  Code  Gb  stm32f1xx_it.o [1]
-Dtentox                  0x800'48c5  0x200  Code  Lc  strto64.o [3]
+                         0x800'534d    0xa  Code  Gb  stm32f1xx_it.o [1]
+DebugMon_Handler         0x800'533f    0x2  Code  Gb  stm32f1xx_it.o [1]
+Dtentox                  0x800'48d1  0x200  Code  Lc  strto64.o [3]
 HAL_DMA_IRQHandler       0x800'2bf3  0x8fc  Code  Gb  stm32f1xx_hal_dma.o [1]
 HAL_DMA_Init             0x800'2b99   0x5a  Code  Gb  stm32f1xx_hal_dma.o [1]
 HAL_Delay                0x800'29e9   0x18  Code  Wk  stm32f1xx_hal.o [1]
 HAL_GPIO_Init            0x800'426d  0x23e  Code  Gb  stm32f1xx_hal_gpio.o [1]
 HAL_GetTick              0x800'29dd    0xc  Code  Wk  stm32f1xx_hal.o [1]
-HAL_IncTick              0x800'5389   0x10  Code  Wk  stm32f1xx_hal.o [1]
+HAL_IncTick              0x800'5395   0x10  Code  Wk  stm32f1xx_hal.o [1]
 HAL_Init                 0x800'44f5   0x20  Code  Gb  stm32f1xx_hal.o [1]
 HAL_InitTick             0x800'2a01   0x24  Code  Wk  stm32f1xx_hal.o [1]
-HAL_MspInit              0x800'4cb5   0x60  Code  Gb  stm32f1xx_hal_msp.o [1]
+HAL_MspInit              0x800'4cc1   0x60  Code  Gb  stm32f1xx_hal_msp.o [1]
 HAL_NVIC_EnableIRQ       0x800'2b35    0xe  Code  Gb  stm32f1xx_hal_cortex.o [1]
 HAL_NVIC_SetPriority     0x800'2b0b   0x2a  Code  Gb  stm32f1xx_hal_cortex.o [1]
 HAL_NVIC_SetPriorityGrouping
@@ -467,11 +467,11 @@ HAL_UART_RxCpltCallback
 HAL_UART_RxCpltCallback::i
                         0x2000'027e    0x1  Data  Lc  main.o [1]
 HAL_UART_Transmit        0x800'35a1   0xfa  Code  Gb  stm32f1xx_hal_uart.o [1]
-HardFault_Handler        0x800'532b    0x2  Code  Gb  stm32f1xx_it.o [1]
-LASER_Init               0x800'4519   0xa4  Code  Gb  laser.o [1]
+HardFault_Handler        0x800'5337    0x2  Code  Gb  stm32f1xx_it.o [1]
+LASER_Init               0x800'4519   0xb0  Code  Gb  laser.o [1]
 MX_DEBUG_USART_Init      0x800'3e93   0x52  Code  Gb  bsp_debug_usart.o [1]
-MemManage_Handler        0x800'532d    0x2  Code  Gb  stm32f1xx_it.o [1]
-NMI_Handler              0x800'5329    0x2  Code  Gb  stm32f1xx_it.o [1]
+MemManage_Handler        0x800'5339    0x2  Code  Gb  stm32f1xx_it.o [1]
+NMI_Handler              0x800'5335    0x2  Code  Gb  stm32f1xx_it.o [1]
 NVIC_EnableIRQ           0x800'2a4d   0x16  Code  Lc  stm32f1xx_hal_cortex.o [1]
 NVIC_EncodePriority      0x800'2a8f   0x40  Code  Lc  stm32f1xx_hal_cortex.o [1]
 NVIC_GetPriorityGrouping
@@ -479,25 +479,25 @@ NVIC_GetPriorityGrouping
 NVIC_SetPriority         0x800'2a63   0x2c  Code  Lc  stm32f1xx_hal_cortex.o [1]
 NVIC_SetPriorityGrouping
                          0x800'2a25   0x1e  Code  Lc  stm32f1xx_hal_cortex.o [1]
-Region$$Table$$Base      0x800'5460          --   Gb  - Linker created -
-Region$$Table$$Limit     0x800'5480          --   Gb  - Linker created -
+Region$$Table$$Base      0x800'5480          --   Gb  - Linker created -
+Region$$Table$$Limit     0x800'54a0          --   Gb  - Linker created -
 Rx_Buf                  0x2000'0208   0x34  Data  Gb  main.o [1]
 SysTick_Config           0x800'2acf   0x30  Code  Lc  stm32f1xx_hal_cortex.o [1]
-SysTick_Handler          0x800'5335    0xc  Code  Gb  stm32f1xx_it.o [1]
+SysTick_Handler          0x800'5341    0xc  Code  Gb  stm32f1xx_it.o [1]
 SystemClock_Config       0x800'3f25   0x68  Code  Gb  main.o [1]
 SystemCoreClock         0x2000'0000    0x4  Data  Gb  system_stm32f1xx.o [1]
-SystemInit               0x800'5399   0x3e  Code  Gb  system_stm32f1xx.o [1]
-UART4_IRQHandler         0x800'535f    0xa  Code  Gb  stm32f1xx_it.o [1]
-UART5_IRQHandler         0x800'5369    0xa  Code  Gb  stm32f1xx_it.o [1]
+SystemInit               0x800'53a5   0x3e  Code  Gb  system_stm32f1xx.o [1]
+UART4_IRQHandler         0x800'536b    0xa  Code  Gb  stm32f1xx_it.o [1]
+UART5_IRQHandler         0x800'5375    0xa  Code  Gb  stm32f1xx_it.o [1]
 UART_EndTransmit_IT      0x800'3ab7   0x30  Code  Lc  stm32f1xx_hal_uart.o [1]
 UART_Receive_IT          0x800'3ae7   0xc4  Code  Lc  stm32f1xx_hal_uart.o [1]
 UART_SetConfig           0x800'3bab   0xfe  Code  Lc  stm32f1xx_hal_uart.o [1]
 UART_Transmit_IT         0x800'3a3f   0x78  Code  Lc  stm32f1xx_hal_uart.o [1]
 UART_WaitOnFlagUntilTimeout
                          0x800'395b   0xe4  Code  Lc  stm32f1xx_hal_uart.o [1]
-USART1_IRQHandler        0x800'534b    0xa  Code  Gb  stm32f1xx_it.o [1]
-USART2_IRQHandler        0x800'5355    0xa  Code  Gb  stm32f1xx_it.o [1]
-UsageFault_Handler       0x800'5331    0x2  Code  Gb  stm32f1xx_it.o [1]
+USART1_IRQHandler        0x800'5357    0xa  Code  Gb  stm32f1xx_it.o [1]
+USART2_IRQHandler        0x800'5361    0xa  Code  Gb  stm32f1xx_it.o [1]
+UsageFault_Handler       0x800'533d    0x2  Code  Gb  stm32f1xx_it.o [1]
 UsartState              0x2000'008c    0x1  Data  Gb  bsp_ASDA_B2.o [1]
 _LitobFullNoMb           0x800'0ef1  0x10a  Code  Lc  xprintffull_nomb.o [2]
 _LocaleC_isalpha         0x800'1a4f    0xc  Code  Gb  xlocale_c.o [2]
@@ -511,38 +511,38 @@ _PutcharsFullNoMb        0x800'1081   0x2e  Code  Lc  xprintffull_nomb.o [2]
 _SProut                  0x800'1147    0xa  Code  Gb  xsprout.o [2]
 __aeabi_cdcmple          0x800'1339         Code  Gb  DblCmpLe.o [3]
 __aeabi_cdrcmple         0x800'1369         Code  Gb  DblCmpGe.o [3]
-__aeabi_d2f              0x800'4c4d         Code  Gb  DblToFlt.o [3]
+__aeabi_d2f              0x800'4c59         Code  Gb  DblToFlt.o [3]
 __aeabi_d2iz             0x800'14d5         Code  Gb  DblToS32.o [3]
 __aeabi_d2uiz            0x800'1861         Code  Gb  DblToU32.o [3]
 __aeabi_dadd             0x800'1cc1         Code  Gb  DblAdd.o [3]
 __aeabi_ddiv             0x800'1619         Code  Gb  DblDiv.o [3]
 __aeabi_dmul             0x800'18a5         Code  Gb  DblMul.o [3]
 __aeabi_dsub             0x800'1535         Code  Gb  DblSub.o [3]
-__aeabi_f2d              0x800'47b1         Code  Gb  FltToDbl.o [3]
+__aeabi_f2d              0x800'47bd         Code  Gb  FltToDbl.o [3]
 __aeabi_i2d              0x800'1511         Code  Gb  S32ToDbl.o [3]
 __aeabi_ldiv0            0x800'1e3d         Code  Gb  I64DivZer.o [4]
 __aeabi_memcpy           0x800'1221         Code  Gb  ABImemcpy.o [4]
 __aeabi_memcpy4          0x800'1241         Code  Gb  ABImemcpy.o [4]
 __aeabi_memcpy8          0x800'1241         Code  Gb  ABImemcpy.o [4]
-__aeabi_memset           0x800'4d15         Code  Gb  ABImemset.o [4]
+__aeabi_memset           0x800'4d21         Code  Gb  ABImemset.o [4]
 __aeabi_ui2d             0x800'1889         Code  Gb  U32ToDbl.o [3]
 __aeabi_uldivmod         0x800'1a89         Code  Gb  I64DivMod.o [4]
-__cmain                  0x800'5481         Code  Gb  cmain.o [4]
+__cmain                  0x800'54a1         Code  Gb  cmain.o [4]
 __exit                   0x800'1e41   0x14  Code  Gb  exit.o [5]
 __iar_Fail_s             0x800'1151   0x1c  Code  Gb  xfail_s.o [2]
 __iar_Memchr             0x800'11c9         Code  Gb  memchr.o [4]
-__iar_Memset             0x800'4d15         Code  Gb  ABImemset.o [4]
-__iar_Memset_word        0x800'4d1d         Code  Gb  ABImemset.o [4]
-__iar_Sto64              0x800'4ac5  0x152  Code  Gb  strto64.o [3]
-__iar_Stoflt             0x800'4ec9  0x1b8  Code  Gb  iar_Stoflt.o [2]
-__iar_Stopfx             0x800'4da7  0x122  Code  Gb  iar_Stopfx.o [2]
-__iar_Stoxflt            0x800'5081  0x1d2  Code  Gb  iar_Stoxflt.o [2]
-__iar_Stoxflt::digits    0x800'5258   0x18  Data  Lc  iar_Stoxflt.o [2]
-__iar_Stoxflt::vals      0x800'5270   0x18  Data  Lc  iar_Stoxflt.o [2]
+__iar_Memset             0x800'4d21         Code  Gb  ABImemset.o [4]
+__iar_Memset_word        0x800'4d29         Code  Gb  ABImemset.o [4]
+__iar_Sto64              0x800'4ad1  0x152  Code  Gb  strto64.o [3]
+__iar_Stoflt             0x800'4ed5  0x1b8  Code  Gb  iar_Stoflt.o [2]
+__iar_Stopfx             0x800'4db3  0x122  Code  Gb  iar_Stopfx.o [2]
+__iar_Stoxflt            0x800'508d  0x1d2  Code  Gb  iar_Stoxflt.o [2]
+__iar_Stoxflt::digits    0x800'5264   0x18  Data  Lc  iar_Stoxflt.o [2]
+__iar_Stoxflt::vals      0x800'527c   0x18  Data  Lc  iar_Stoxflt.o [2]
 __iar_Strchr             0x800'1131         Code  Gb  strchr.o [4]
 __iar_close_ttio         0x800'1e55   0x2c  Code  Gb  iarttio.o [5]
 __iar_dadd               0x800'1545         Code  Gb  DblSub.o [3]
-__iar_data_init3         0x800'5439   0x28  Code  Gb  data_init.o [4]
+__iar_data_init3         0x800'5459   0x28  Code  Gb  data_init.o [4]
 __iar_dsub               0x800'1cd1         Code  Gb  DblAdd.o [3]
 __iar_dsubStart          0x800'1ce3         Code  Gb  DblAdd.o [3]
 __iar_frexp              0x800'12d5         Code  Gb  frexp.o [3]
@@ -553,18 +553,18 @@ __iar_global_Locale      0x800'1a79    0x4  Code  Gb  xlocale_c.o [2]
 __iar_ldexp64            0x800'1399         Code  Gb  ldexp.o [3]
 __iar_lookup_ttioh       0x800'1e81    0x4  Code  Gb  XShttio.o [2]
 __iar_lz77_init_single3
-                         0x800'52b1   0x78  Code  Gb  lz77_init_single.o [4]
-__iar_program_start      0x800'5511         Code  Gb  cstartup_M.o [4]
+                         0x800'52bd   0x78  Code  Gb  lz77_init_single.o [4]
+__iar_program_start      0x800'551d         Code  Gb  cstartup_M.o [4]
 __iar_scalbln64          0x800'1399         Code  Gb  ldexp.o [3]
 __iar_scalbn64           0x800'1399         Code  Gb  ldexp.o [3]
 __iar_ttio_handles      0x2000'0084    0x8  Data  Lc  XShttio.o [2]
 __iar_zero_init3         0x800'10f7   0x3a  Code  Gb  zero_init3.o [4]
-__low_level_init         0x800'549f    0x4  Code  Gb  low_level_init.o [2]
+__low_level_init         0x800'54bf    0x4  Code  Gb  low_level_init.o [2]
 __vector_table           0x800'0000         Data  Gb  startup_stm32f103xe.o [1]
-_call_main               0x800'548d         Code  Gb  cmain.o [4]
-_exit                    0x800'54a9         Code  Gb  cexit.o [4]
-_main                    0x800'549b         Code  Gb  cmain.o [4]
-aAPBAHBPrescTable        0x800'54d8   0x10  Data  Gb  stm32f1xx_hal_rcc.o [1]
+_call_main               0x800'54ad         Code  Gb  cmain.o [4]
+_exit                    0x800'54c9         Code  Gb  cexit.o [4]
+_main                    0x800'54bb         Code  Gb  cmain.o [4]
+aAPBAHBPrescTable        0x800'54e4   0x10  Data  Gb  stm32f1xx_hal_rcc.o [1]
 aRxBuffer_debug         0x2000'027a    0x1  Data  Gb  main.o [1]
 aRxBuffer_laser1        0x2000'027b    0x1  Data  Gb  main.o [1]
 aRxBuffer_laser2        0x2000'027c    0x1  Data  Gb  main.o [1]
@@ -576,9 +576,9 @@ count_laser1            0x2000'0278    0x1  Data  Gb  laser.o [1]
 count_laser2            0x2000'0279    0x1  Data  Gb  laser.o [1]
 distance_laser1         0x2000'0260    0x4  Data  Gb  laser.o [1]
 distance_laser2         0x2000'0264    0x4  Data  Gb  laser.o [1]
-dmul                     0x800'4839   0x8c  Code  Lc  strto64.o [3]
+dmul                     0x800'4845   0x8c  Code  Lc  strto64.o [3]
 end                     0x2000'0268    0x4  Data  Gb  main.o [1]
-exit                     0x800'54a3    0x4  Code  Gb  exit.o [2]
+exit                     0x800'54c3    0x4  Code  Gb  exit.o [2]
 flag1_laser1            0x2000'0274    0x1  Data  Gb  laser.o [1]
 flag1_laser2            0x2000'0276    0x1  Data  Gb  laser.o [1]
 flag2_laser1            0x2000'0275    0x1  Data  Gb  laser.o [1]
@@ -591,31 +591,31 @@ husart_laser1           0x2000'0110   0x40  Data  Gb  laser.o [1]
 husart_laser2           0x2000'0150   0x40  Data  Gb  laser.o [1]
 husart_motor            0x2000'0190   0x40  Data  Gb  motor.o [1]
 husartx_rs485           0x2000'00d0   0x40  Data  Gb  bsp_debug_usart.o [1]
-isalpha                  0x800'529d   0x14  Code  Gb  isalpha.o [2]
-isspace                  0x800'5289   0x14  Code  Gb  isspace.o [2]
-laser_send_cmd           0x800'46fd   0xb4  Code  Gb  laser.o [1]
-laser_set_range          0x800'4641   0x7e  Code  Gb  laser.o [1]
-laser_start_measure      0x800'45bd   0x48  Code  Gb  laser.o [1]
-laser_stop_measure       0x800'4605   0x3c  Code  Gb  laser.o [1]
+isalpha                  0x800'52a9   0x14  Code  Gb  isalpha.o [2]
+isspace                  0x800'5295   0x14  Code  Gb  isspace.o [2]
+laser_send_cmd           0x800'4709   0xb4  Code  Gb  laser.o [1]
+laser_set_range          0x800'464d   0x7e  Code  Gb  laser.o [1]
+laser_start_measure      0x800'45c9   0x48  Code  Gb  laser.o [1]
+laser_stop_measure       0x800'4611   0x3c  Code  Gb  laser.o [1]
 ldexp                    0x800'1399         Code  Gb  ldexp.o [3]
 ldexpl                   0x800'1399         Code  Gb  ldexp.o [3]
 localeconv               0x800'1a7d    0x4  Code  Gb  xlocale_c.o [2]
 main                     0x800'3f8d   0x80  Code  Gb  main.o [1]
 main::dis               0x2000'0254    0xc  Data  Lc  main.o [1]
 memchr                   0x800'11c9         Code  Gb  memchr.o [4]
-pows                     0x800'53f0   0x48  Data  Lc  strto64.o [3]
+pows                     0x800'5410   0x48  Data  Lc  strto64.o [3]
 scalbln                  0x800'1399         Code  Gb  ldexp.o [3]
 scalblnl                 0x800'1399         Code  Gb  ldexp.o [3]
 scalbn                   0x800'1399         Code  Gb  ldexp.o [3]
 scalbnl                  0x800'1399         Code  Gb  ldexp.o [3]
 scale                    0x800'0ffb   0x46  Code  Lc  xprintffull_nomb.o [2]
 sec_hand                0x2000'0270    0x4  Data  Lc  xfail_s.o [2]
-sprintf                  0x800'47f9   0x40  Code  Gb  sprintf.o [2]
+sprintf                  0x800'4805   0x40  Code  Gb  sprintf.o [2]
 strchr                   0x800'1131         Code  Gb  strchr.o [4]
 strlen                   0x800'1191         Code  Gb  strlen.o [4]
-strstr                   0x800'4d7b   0x2c  Code  Gb  strstr.o [2]
-strtod                   0x800'4c45    0x6  Code  Gb  strto64.o [3]
-strtold                  0x800'4c45    0x6  Code  Gb  strto64.o [3]
+strstr                   0x800'4d87   0x2c  Code  Gb  strstr.o [2]
+strtod                   0x800'4c51    0x6  Code  Gb  strto64.o [3]
+strtold                  0x800'4c51    0x6  Code  Gb  strto64.o [3]
 uwTick                  0x2000'026c    0x4  Data  Lc  stm32f1xx_hal.o [1]
 
 
@@ -625,7 +625,7 @@ uwTick                  0x2000'026c    0x4  Data  Lc  stm32f1xx_hal.o [1]
 [4] = rt7M_tl.a
 [5] = shb_l.a
 
-  21'827 bytes of readonly  code memory
+  21'839 bytes of readonly  code memory
      276 bytes of readonly  data memory
    4'732 bytes of readwrite data memory
 

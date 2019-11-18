@@ -60,7 +60,9 @@ void LASER_Init()
 
     //设置激光1和激光2的量程
     laser_stop_measure(LASER1);
+    HAL_Delay(100);
     laser_set_range(LASER1, 10000);
+    HAL_Delay(100);
     // laser_set_range(LASER2, 10000);
 }
 
