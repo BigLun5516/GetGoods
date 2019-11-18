@@ -148,7 +148,6 @@ uint8_t laser_send_cmd(UART_HandleTypeDef *husart_laser, uint8_t *cmd, uint8_t *
     uint8_t receive_count = 0;
     uint8_t rx_buf[MAX_RECV_LEN];
     HAL_UART_Transmit(husart_laser, cmd, strlen((char *)cmd), 2000);
-    HAL_UART_Transmit(husart_laser, "\r\n", 2, 1000);
 
     do
     {
