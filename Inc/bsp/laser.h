@@ -43,8 +43,15 @@
 extern UART_HandleTypeDef husart_laser1; // 串口2
 extern UART_HandleTypeDef husart_laser2; // 串口4
 
-extern float distance_laser1;
+extern float distance_laser1; // 当前距离
 extern float distance_laser2;
+extern float last_distance_laser1; // 上一次测量的距离
+extern float last_distance_laser2;
+extern float last_last_distance_laser1; // 上上次测量的距离
+extern float last_last_distance_laser2;
+
+extern float distance_filter_laser2; // 滤波后的距离
+extern float distance_filter_laser1;
 
 extern uint8_t buf_laser1[10];
 extern uint8_t buf_laser2[10];
