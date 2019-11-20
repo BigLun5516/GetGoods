@@ -7,6 +7,9 @@
 #define MAX ratedSpd  //限制最大转速
 #define MIN -ratedSpd //限制最小转速
 
+#define crtDistance 0.1 // 安全距离
+#define allowedError 0.01
+
 extern float Motor_PID(float set, float now, uint8_t clear);
 
 #endif

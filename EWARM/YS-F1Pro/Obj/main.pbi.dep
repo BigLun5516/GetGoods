@@ -65,4 +65,5 @@ main.pbi: E:\Code\IAR_Projects\GetGoods\Src\main.c \
   D:\IAR\arm\inc\c\string.h D:\IAR\arm\inc\c\DLib_Product_string.h \
   E:\Code\IAR_Projects\GetGoods\EWARM\..\Inc\bsp\ASDA_B2/bsp_ASDA_B2.h \
   E:\Code\IAR_Projects\GetGoods\EWARM\..\Inc\bsp\relay.h \
-  D:\IAR\arm\inc\c\stdlib.h D:\IAR\arm\inc\c\DLib_Product_stdlib.h
+  D:\IAR\arm\inc\c\stdlib.h D:\IAR\arm\inc\c\DLib_Product_stdlib.h \
+  E:\Code\IAR_Projects\GetGoods\EWARM\..\Inc\bsp\pid.h
