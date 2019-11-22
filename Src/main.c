@@ -6,6 +6,8 @@
 #include "relay.h"
 #include "stdlib.h"
 #include "pid.h"
+#include <math.h>
+
 
 /* 私有类型定义 --------------------------------------------------------------*/
 /* 私有宏定义 ----------------------------------------------------------------*/
@@ -81,14 +83,13 @@ int main(void)
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // 激光测试
-    // LASER_Init();
-    // HAL_UART_Transmit(&husart_debug, "start1\r\n", 8, 1000);
+    LASER_Init();
     // laser_start_measure(LASER1, 2);
 
-    // // laser_start_measure(LASER2);
+    laser_start_measure(LASER2, 2);
     // HAL_UART_Receive_IT(&husart_laser1, &aRxBuffer_laser1, 1); // 激光1的串口 开中断
-    // // HAL_UART_Receive_IT(&husart_laser2, &aRxBuffer_laser2, 1); // 激光2的串口 开中断
-    // HAL_Delay(500);
+    HAL_UART_Receive_IT(&husart_laser2, &aRxBuffer_laser2, 1); // 激光2的串口 开中断
+    HAL_Delay(500);
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // 大电机 线性模组
     // RS485_USARTx_Init();
@@ -109,19 +110,12 @@ int main(void)
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // 小电机测试
-    // MOTOR_USARTx_Init();
+    MOTOR_USARTx_Init();
+    motor_reset();
+    motor_entry_velocity_mode();
     // HAL_UART_Receive_IT(&husart_debug, &aRxBuffer_debug, 1);
     // HAL_UART_Receive_IT(&husart_motor, &aRxBuffer_motor, 1);
 
-    // motor_reset();
-    // motor_entry_velocity_mode();
-    // motor_set_velocity(500);
-    // motor_recieve_info();
-    // HAL_Delay(3000);
-    // motor_stop_recieve_info();
-    // HAL_Delay(3000);
-    // // motor_set_velocity(-500);
-    // motor_stop();
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // 继电器测试
     // RELAY_Init();
@@ -139,7 +133,7 @@ int main(void)
     /* 无限循环 */
     while (1)
     {
-        static uint8_t cmd_buf[100];
+        static uint8_t cmd_buf[100]; ///////
         static uint8_t cmd_count = 0;
 
         static uint8_t flag_heigth = 0;
@@ -148,116 +142,139 @@ int main(void)
         static uint8_t flag_put = 0;
         static uint8_t flag_throw = 0;
 
-        static double height;
-        static double width;
+        static double height;  ///////////
+        static double width;    //////////
+
+        width = 0; //////////////////////////////////////测试用
 
         // 接收 物品高度
-        while (!flag_heigth)
-        {
-            HAL_UART_Receive(&husart_debug, &cmd_buf[cmd_count], 1, 10);
-            cmd_count++;
-            if (cmd_count == 1 && cmd_buf[0] != 'D')
-            {
-                cmd_count = 0;
-            }
-            else if (cmd_count == 2 && cmd_buf[1] != 'H')
-            {
-                cmd_count = 0;
-            }
-            else if (cmd_buf[cmd_count - 1] == '!')
-            {
-                height = strtod(cmd_buf + 2, &end);
-                cmd_buf[cmd_count] = '\0';
-                while (laser_send_cmd(&husart_debug, cmd_buf, "OK", 100))
-                    ;
-                cmd_count = 0;
-                flag_heigth = 1;
-            }
-        }
+        // while (!flag_heigth)
+        // {
+        //     HAL_UART_Receive(&husart_debug, &cmd_buf[cmd_count], 1, 10);
+        //     cmd_count++;
+        //     if (cmd_count == 1 && cmd_buf[0] != 'D')
+        //     {
+        //         cmd_count = 0;
+        //     }
+        //     else if (cmd_count == 2 && cmd_buf[1] != 'H')
+        //     {
+        //         cmd_count = 0;
+        //     }
+        //     else if (cmd_buf[cmd_count - 1] == '!')
+        //     {
+        //         height = strtod(cmd_buf + 2, &end);
+        //         cmd_buf[cmd_count] = '\0';
+        //         while (laser_send_cmd(&husart_debug, cmd_buf, "OK", 100))
+        //             ;
+        //         cmd_count = 0;
+        //         flag_heigth = 1;
+        //     }
+        // }
 
-        // 接收 托盘宽度
-        while (!flag_width)
-        {
-            HAL_UART_Receive(&husart_debug, &cmd_buf[cmd_count], 1, 10);
-            cmd_count++;
-            if (cmd_count == 1 && cmd_buf[0] != 'D')
-            {
-                cmd_count = 0;
-            }
-            else if (cmd_count == 2 && cmd_buf[1] != 'W')
-            {
-                cmd_count = 0;
-            }
-            else if (cmd_buf[cmd_count - 1] == '!')
-            {
-                width = strtod(cmd_buf + 2, &end);
-                cmd_buf[cmd_count] = '\0';
-                while (laser_send_cmd(&husart_debug, cmd_buf, "OK", 100))
-                    ;
-                cmd_count = 0;
-                flag_width = 1;
-            }
-        }
+        // // 接收 托盘宽度
+        // while (!flag_width)
+        // {
+        //     HAL_UART_Receive(&husart_debug, &cmd_buf[cmd_count], 1, 10);
+        //     cmd_count++;
+        //     if (cmd_count == 1 && cmd_buf[0] != 'D')
+        //     {
+        //         cmd_count = 0;
+        //     }
+        //     else if (cmd_count == 2 && cmd_buf[1] != 'W')
+        //     {
+        //         cmd_count = 0;
+        //     }
+        //     else if (cmd_buf[cmd_count - 1] == '!')
+        //     {
+        //         width = strtod(cmd_buf + 2, &end);
+        //         cmd_buf[cmd_count] = '\0';
+        //         while (laser_send_cmd(&husart_debug, cmd_buf, "OK", 100))
+        //             ;
+        //         cmd_count = 0;
+        //         flag_width = 1;
+        //     }
+        // }
 
-        // 接收 开始取货的命令
-        while (!flag_get)
-        {
-            HAL_UART_Receive(&husart_debug, &cmd_buf[cmd_count], 1, 10);
-            cmd_count++;
-            if (cmd_count == 1 && cmd_buf[0] != 'C')
-            {
-                cmd_count = 0;
-            }
-            else if (cmd_count == 2 && cmd_buf[1] != 'G')
-            {
-                cmd_count = 0;
-            }
-            else if (cmd_count == 3 && cmd_buf[2] != 'e')
-            {
-                cmd_count = 0;
-            }
-            else if (cmd_count == 4 && cmd_buf[3] != 't')
-            {
-                cmd_count = 0;
-            }
-            else if (cmd_count == 5 && cmd_buf[4] != '@')
-            {
-                cmd_count = 0;
-            }
-            else if (cmd_count == 5)
-            {
-                cmd_buf[cmd_count] = '\0';
-                while (laser_send_cmd(&husart_debug, cmd_buf, "OK", 100))
-                    ;
-                cmd_count = 0;
-                flag_get = 1;
-            }
-        }
-        // 移动到 物品高度
-        while (1)
-        {
-            distance_filter_laser1 = distance_laser1 * (1 - filter) + last_distance_laser1 * filter;
-            if ((distance_filter_laser1 - height) > crtDistance) //控制策略选择
-                setSpd = ratedSpd;
-            else if ((distance_filter_laser1 - height) < (-1 * crtDistance)) //控制策略选择
-                setSpd = -1 * ratedSpd;
-            else if (fabs(distance_filter_laser1 - height) <= crtDistance)
-                setSpd = Motor_PID(height, distance_filter_laser1, 0);
-            SetSpeed(REG_SP3, setSpd);
+        // // 接收 开始取货的命令
+        // while (!flag_get)
+        // {
+        //     HAL_UART_Receive(&husart_debug, &cmd_buf[cmd_count], 1, 10);
+        //     cmd_count++;
+        //     if (cmd_count == 1 && cmd_buf[0] != 'C')
+        //     {
+        //         cmd_count = 0;
+        //     }
+        //     else if (cmd_count == 2 && cmd_buf[1] != 'G')
+        //     {
+        //         cmd_count = 0;
+        //     }
+        //     else if (cmd_count == 3 && cmd_buf[2] != 'e')
+        //     {
+        //         cmd_count = 0;
+        //     }
+        //     else if (cmd_count == 4 && cmd_buf[3] != 't')
+        //     {
+        //         cmd_count = 0;
+        //     }
+        //     else if (cmd_count == 5 && cmd_buf[4] != '@')
+        //     {
+        //         cmd_count = 0;
+        //     }
+        //     else if (cmd_count == 5)
+        //     {
+        //         cmd_buf[cmd_count] = '\0';
+        //         while (laser_send_cmd(&husart_debug, cmd_buf, "OK", 100))
+        //             ;
+        //         cmd_count = 0;
+        //         flag_get = 1;
+        //     }
+        // }
+        // // 移动到 物品高度
+        // while (1)
+        // {
+        //     distance_filter_laser1 = distance_laser1 * (1 - filter) + last_distance_laser1 * filter;
+        //     if ((distance_filter_laser1 - height) > crtDistance) //控制策略选择
+        //         setSpd = ratedSpd1;
+        //     else if ((distance_filter_laser1 - height) < (-1 * crtDistance)) //控制策略选择
+        //         setSpd = -1 * ratedSpd1;
+        //     else if (fabs(distance_filter_laser1 - height) <= crtDistance)
+        //         setSpd = Motor_PID1(height, distance_filter_laser1, 0);
+        //     SetSpeed(REG_SP3, setSpd);
 
-            if ((fabs(distance_laser1 - height) < allowedError) &&
-                (fabs(last_distance_laser1 - height) < allowedError) &&
-                (fabs(last_last_distance_laser1 - height) < allowedError)) //连续三帧满足误差范围要求进行下一步
+        //     if ((fabs(distance_laser1 - height) < allowedError) &&
+        //         (fabs(last_distance_laser1 - height) < allowedError) &&
+        //         (fabs(last_last_distance_laser1 - height) < allowedError)) //连续三帧满足误差范围要求进行下一步
+        //     {
+        //         SetSpeed(REG_SP3, 0); //停止电机
+        //         setSpd = 0;
+        //         Motor_PID1(0, 0, 1); //清除历史值
+        //         break;
+        //     }
+        //     HAL_Delay(20);
+        // }
+
+        // 取货
+        while(1){
+            distance_filter_laser2 = distance_laser2 * (1 - filter) + last_distance_laser2 * filter;
+            if ((distance_filter_laser2 - (init_distance_laser2 -  width / 2)) > crtDistance) //控制策略选择
+                setSpd = ratedSpd2;
+            else if ((distance_filter_laser2 - (init_distance_laser2 -  width / 2)) < (-1 * crtDistance)) //控制策略选择
+                setSpd = -1 * ratedSpd2;
+            else if (fabs(distance_filter_laser2 - (init_distance_laser2 -  width / 2)) <= crtDistance)
+                setSpd = Motor_PID2(init_distance_laser2 -  width / 2, distance_filter_laser2, 0);
+            motor_set_velocity(setSpd);
+
+            if ((fabs(distance_laser2 - (init_distance_laser2 -  width / 2)) < allowedError) &&
+                (fabs(last_distance_laser2 - (init_distance_laser2 -  width / 2)) < allowedError) &&
+                (fabs(last_last_distance_laser2 - (init_distance_laser2 -  width / 2)) < allowedError)) //连续三帧满足误差范围要求进行下一步
             {
-                SetSpeed(REG_SP3, 0); //停止电机
+                motor_stop(); //停止电机
                 setSpd = 0;
-                Motor_PID(0, 0, 1); //清除历史值
+                Motor_PID2(0, 0, 1); //清除历史值
                 break;
             }
             HAL_Delay(20);
         }
-
-        // 取货
         
 
         // 取完货 发个消息

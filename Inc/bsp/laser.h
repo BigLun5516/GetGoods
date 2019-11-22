@@ -50,6 +50,8 @@ extern float last_distance_laser2;
 extern float last_last_distance_laser1; // 上上次测量的距离
 extern float last_last_distance_laser2;
 
+extern const float init_distance_laser2; // 激光2 与 取货杆前端的距离
+
 extern float distance_filter_laser2; // 滤波后的距离
 extern float distance_filter_laser1;
 

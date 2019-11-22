@@ -15,6 +15,8 @@ float last_last_distance_laser2;
 float distance_filter_laser1;
 float distance_filter_laser2;
 
+const float init_distance_laser2 = 0.2;
+
 uint8_t buf_laser1[10];
 uint8_t buf_laser2[10];
 
@@ -66,9 +68,9 @@ void LASER_Init()
     HAL_NVIC_EnableIRQ(LASER2_USART_IRQn);
 
     //设置激光1和激光2的量程
-    laser_stop_measure(LASER1);
+    laser_stop_measure(LASER2);
     HAL_Delay(100);
-    laser_set_range(LASER1, 10000);
+    laser_set_range(LASER2, 10000);
     HAL_Delay(100);
     // laser_set_range(LASER2, 10000);
 }
@@ -155,7 +157,7 @@ uint8_t laser_send_cmd(UART_HandleTypeDef *husart_laser, uint8_t *cmd, uint8_t *
     uint8_t res = 1;
     char *strx = NULL;
     uint8_t receive_count = 0;
-    uint8_t rx_buf[MAX_RECV_LEN];
+    uint8_t rx_buf[MAX_RECV_LEN]; 
     HAL_UART_Transmit(husart_laser, cmd, strlen((char *)cmd), 2000);
 
     do
