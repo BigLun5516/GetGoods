@@ -40,6 +40,15 @@
 #define RELAY5_OFF          HAL_GPIO_WritePin(RELAY5_GPIO, RELAY5_GPIO_PIN, GPIO_PIN_SET)
 #define RELAY5_TOGGLE          HAL_GPIO_WritePin(RELAY5_GPIO, RELAY5_GPIO_PIN)
 
+#define DCT_ON      RELAY5_ON     
+#define DCT_OFF     RELAY5_OFF    
+#define DCT_TOGGLE  RELAY5_TOGGLE 
+
 void RELAY_Init();
+
+void push_rod_extend();
+void push_rod_back();
+void push_rod_stop();
+
 
 #endif

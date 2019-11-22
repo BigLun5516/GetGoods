@@ -35,3 +35,33 @@ void RELAY_Init(){
     HAL_GPIO_Init(RELAY5_GPIO, &GPIO_InitStruct);
     RELAY5_OFF;
 }
+
+void push_rod_extend(){
+    RELAY1_OFF;
+    RELAY2_OFF;
+    RELAY3_OFF;
+    RELAY4_OFF;
+    HAL_Delay(500);
+    RELAY1_ON;
+    RELAY4_ON;
+}
+
+void push_rod_back(){
+    RELAY1_OFF;
+    RELAY2_OFF;
+    RELAY3_OFF;
+    RELAY4_OFF;
+    HAL_Delay(500);
+    RELAY2_ON;
+    RELAY3_ON;
+}
+
+void push_rod_stop(){
+    RELAY1_OFF;
+    RELAY2_OFF;
+    RELAY3_OFF;
+    RELAY4_OFF;
+    HAL_Delay(500);
+    RELAY2_ON;
+    RELAY4_ON;
+}
