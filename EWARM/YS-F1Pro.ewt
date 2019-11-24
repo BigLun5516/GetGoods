@@ -1197,10 +1197,16 @@
                 <name>$PROJ_DIR$\..\Src\bsp\usart\bsp_debug_usart.c</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\Src\bsp\communication.c</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\Src\bsp\laser.c</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Src\bsp\motor.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Src\bsp\pid.c</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Src\bsp\relay.c</name>
@@ -1378,7 +1384,4 @@
             <name>$PROJ_DIR$\..\Readme\02.开发环境说明.txt</name>
         </file>
     </group>
-    <file>
-        <name>$PROJ_DIR$\..\Src\bsp\pid.c</name>
-    </file>
 </project>

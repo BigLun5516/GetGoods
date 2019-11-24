@@ -1,4 +1,5 @@
 #include "motor.h"
+#include "usart/bsp_debug_usart.h"
 
 UART_HandleTypeDef husart_motor;
 
@@ -20,13 +21,15 @@ uint8_t set_velocity_cmd[10] = {0x23, 0x04, 0x13, 0x88, 0x01, 0xF4, 0x55, 0x55, 
 // 电机复位
 void motor_reset()
 {
-    HAL_UART_Transmit(&husart_motor, reset_cmd, 10, 1000);
+    HAL_UART_Transmit(&husart_motor, reset_cmd, 10, 100);
+    HAL_UART_Transmit(&husart_debug, reset_cmd, 10, 1000);//////
 }
 
 // 选择速度模式
 void motor_entry_velocity_mode()
 {
-    HAL_UART_Transmit(&husart_motor, velocity_mode_cmd, 10, 1000);
+    HAL_UART_Transmit(&husart_motor, velocity_mode_cmd, 10, 100);
+    HAL_UART_Transmit(&husart_debug, velocity_mode_cmd, 10, 1000);//////
 }
 
 // 设置速度
@@ -34,26 +37,28 @@ void motor_set_velocity(int16_t velocity)
 {
     set_velocity_cmd[4] = (velocity >> 8) & 0xff; // 防止移位是算数移位 从而导致高8位为1
     set_velocity_cmd[5] = velocity & 0xff;
-    HAL_UART_Transmit(&husart_motor, set_velocity_cmd, 10, 1000);
+    HAL_UART_Transmit(&husart_motor, set_velocity_cmd, 10, 100);
+    HAL_UART_Transmit(&husart_debug, set_velocity_cmd, 10, 1000);//////
 }
 
 // 电机停止
 void motor_stop()
 {
     // 断电 速度设为0
-    HAL_UART_Transmit(&husart_motor, stop_cmd, 10, 1000);
+    HAL_UART_Transmit(&husart_motor, stop_cmd, 10, 100);
+    HAL_UART_Transmit(&husart_debug, stop_cmd, 10, 1000);//////
 }
 
 // 配置电机接收速度、位置、电流反馈信息
 void motor_recieve_info()
 {
-    HAL_UART_Transmit(&husart_motor, receive_info_cmd, 10, 1000);
+    HAL_UART_Transmit(&husart_motor, receive_info_cmd, 10, 100);
 }
 
 // 电机停止接收反馈信息
 void motor_stop_recieve_info()
 {
-    HAL_UART_Transmit(&husart_motor, stop_receive_info_cmd, 10, 1000);
+    HAL_UART_Transmit(&husart_motor, stop_receive_info_cmd, 10, 100);
 }
 
 

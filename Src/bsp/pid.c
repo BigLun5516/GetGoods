@@ -6,8 +6,8 @@ struct PID
     float I;
     float D;
 };
-struct PID dis_PID = {1000, 0, 0};
-struct PID dis_PID2 = {2000, 0, 0};
+struct PID dis_PID = {8000, 0, 0};
+struct PID dis_PID2 = {8000, 0, 0};
 
 //参数：设定值，当前值，清除历史值（1清除，0不清除）
 float Motor_PID1(float set, float now, uint8_t clear)
