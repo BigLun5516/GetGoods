@@ -90,41 +90,35 @@ int main(void)
     laser_start_measure(LASER2, 2);
     HAL_Delay(500);
 
-    HAL_UART_Receive_IT(&husart_laser1, &aRxBuffer_laser1, 1); // 激光2的串口 开中断
+    HAL_UART_Receive_IT(&husart_laser1, &aRxBuffer_laser1, 1); // 激光1的串口 开中断
     HAL_UART_Receive_IT(&husart_laser2, &aRxBuffer_laser2, 1); // 激光2的串口 开中断
     HAL_Delay(500);
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // 大电机 线性模组
-    // RS485_USARTx_Init();
+    RS485_USARTx_Init();
 
-    // HAL_UART_Receive_DMA(&husartx_rs485,&test, 1);// Data Direction: 485 --> USART1
+    HAL_UART_Receive_DMA(&husartx_rs485,&test, 1);// Data Direction: 485 --> USART1
 
-    // /* Disable the Half transfer complete interrupt */
-    // __HAL_DMA_DISABLE_IT(&hdma_rs485_rx, DMA_IT_HT);
-    // __HAL_DMA_DISABLE_IT(&hdma_rs485_rx, DMA_IT_TE);
+    /* Disable the Half transfer complete interrupt */
+    __HAL_DMA_DISABLE_IT(&hdma_rs485_rx, DMA_IT_HT);
+    __HAL_DMA_DISABLE_IT(&hdma_rs485_rx, DMA_IT_TE);
 
-    // /* 初始化ASDA-B2参数,配置为速度模式*/
-    // ASDAB2_Init();
-    // /* 设置SP3速度值为0*0.1r/min */
-    // SetSpeed(REG_SP3,0);
-    // /* 启动伺服 */
-    // StartServo();
-    // HAL_Delay(2000); // 两秒后启动
+    /* 初始化ASDA-B2参数,配置为速度模式*/
+    ASDAB2_Init();
+    /* 设置SP3速度值为0*0.1r/min */
+    SetSpeed(REG_SP3,0);
+    /* 启动伺服 */
+    StartServo();
+    HAL_Delay(2000); // 两秒后启动
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // 小电机测试
     MOTOR_USARTx_Init();
-    HAL_Delay(500);
-    
-    // HAL_UART_Transmit(&husart_motor, "motor, hello!", 13, 1000);///////////
-    // HAL_UART_Receive_IT(&husart_motor, &aRxBuffer_motor, 1);/////
-    // while(1);
-    
+    HAL_Delay(1000);
     motor_reset();
-    HAL_Delay(500);
+    HAL_Delay(1000);
     motor_entry_velocity_mode();
       HAL_Delay(500);
-    // HAL_UART_Receive_IT(&husart_motor, &aRxBuffer_motor, 1);
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // 继电器测试
@@ -137,54 +131,53 @@ int main(void)
     // RELAY4_OFF;
     // DCT_OFF;
 
-
-
+    while(laser_send_cmd(&husart_debug, "CRdyOK@", "CRdyOK", 100));
+    HAL_UART_Transmit(&husart_debug, "OK", 2, 1000);
+    
     /* 无限循环 */
     while (1)
     {
-        height = 1.5; //////////////////////////////////////测试用
+        // 接收 物品高度
+        while (!flag_heigth)
+        {
+            cmmu_receive_data_height(&husart_debug);
+        }
 
-        // // 接收 物品高度
-        // while (!flag_heigth)
-        // {
-        //     cmmu_receive_data_height(&husart_debug);
-        // }
+        // 接收 托盘宽度
+        while (!flag_width)
+        {
+            cmmu_receive_data_width(&husart_debug);
+        }
 
-        // // 接收 托盘宽度
-        // while (!flag_width)
-        // {
-        //     cmmu_receive_data_width(&husart_debug);
-        // }
-
-        // // 接收 开始取货的命令
-        // while (!flag_get)
-        // {
-        //     cmmu_receive_cmd_get(&husart_debug);
-        // }
+        // 接收 开始取货的命令
+        while (!flag_get)
+        {
+            cmmu_receive_cmd_get(&husart_debug);
+        }
         
         // 移动到 物品高度
-        // while (1)
-        // {
-        //     distance_filter_laser1 = distance_laser1 * (1 - filter) + last_distance_laser1 * filter;
-        //     if ((distance_filter_laser1 - height) > crtDistance) //控制策略选择
-        //         setSpd = ratedSpd1;
-        //     else if ((distance_filter_laser1 - height) < (-1 * crtDistance)) //控制策略选择
-        //         setSpd = -1 * ratedSpd1;
-        //     else if (fabs(distance_filter_laser1 - height) <= crtDistance)
-        //         setSpd = Motor_PID1(height, distance_filter_laser1, 0);
-        //     SetSpeed(REG_SP3, setSpd);
+        while (1)
+        {
+            distance_filter_laser1 = distance_laser1 * (1 - filter) + last_distance_laser1 * filter;
+            if ((distance_filter_laser1 - height) > crtDistance) //控制策略选择
+                setSpd = ratedSpd1;
+            else if ((distance_filter_laser1 - height) < (-1 * crtDistance)) //控制策略选择
+                setSpd = -1 * ratedSpd1;
+            else if (fabs(distance_filter_laser1 - height) <= crtDistance)
+                setSpd = Motor_PID1(height, distance_filter_laser1, 0);
+            SetSpeed(REG_SP3, setSpd);
 
-        //     if ((fabs(distance_laser1 - height) < allowedError) &&
-        //         (fabs(last_distance_laser1 - height) < allowedError) &&
-        //         (fabs(last_last_distance_laser1 - height) < allowedError)) //连续三帧满足误差范围要求进行下一步
-        //     {
-        //         SetSpeed(REG_SP3, 0); //停止电机
-        //         setSpd = 0;
-        //         Motor_PID1(0, 0, 1); //清除历史值
-        //         break;
-        //     }
-        //     HAL_Delay(20);
-        // }
+            if ((fabs(distance_laser1 - height) < allowedError) &&
+                (fabs(last_distance_laser1 - height) < allowedError) &&
+                (fabs(last_last_distance_laser1 - height) < allowedError)) //连续三帧满足误差范围要求进行下一步
+            {
+                SetSpeed(REG_SP3, 0); //停止电机
+                setSpd = 0;
+                Motor_PID1(0, 0, 1); //清除历史值
+                break;
+            }
+            HAL_Delay(20);
+        }
 
 
         // 取货  伸出取货杆
@@ -210,7 +203,6 @@ int main(void)
             HAL_Delay(30);
         }
 
-        while(1); ////////////////
         
         // 收回取货杆
         
@@ -227,11 +219,11 @@ int main(void)
         }
 
         // 卸货
-        push_rod_extend();
-        HAL_Delay(2000); // 等待推杆推到底
-        push_rod_back();
-            // 等待行程开关按下
-        push_rod_stop();
+        // push_rod_extend();
+        // HAL_Delay(2000); // 等待推杆推到底
+        // push_rod_back();
+        //     // 等待行程开关按下
+        // push_rod_stop();
 
         // 卸完货 发个消息
         while (laser_send_cmd(&husart_debug, "CPutOK@", "CPutOK@", 100))

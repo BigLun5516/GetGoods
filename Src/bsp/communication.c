@@ -1,4 +1,5 @@
 #include "communication.h"
+#include "stdlib.h"
 
 uint8_t cmd_buf[100];
 uint8_t cmd_count = 0;
@@ -11,6 +12,7 @@ double height;
 double width;
 
 char *end_; // 用于函数 strtod(char*, char**);
+
 
 void cmmu_receive_data_height(UART_HandleTypeDef *husart)
 {
@@ -153,7 +155,7 @@ void cmmu_receive_cmd_throw(UART_HandleTypeDef *husart)
     else if (cmd_count == 5)
     {
         cmd_buf[cmd_count] = '\0';
-        while (laser_send_cmd(&husart, cmd_buf, "OK", 100))
+        while (laser_send_cmd(husart, cmd_buf, "OK", 100))
             ;
         cmd_count = 0;
         flag_throw = 1;
