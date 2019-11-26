@@ -5,7 +5,7 @@
 
 #define CMMU_BUF_SIZE 400
 
-extern uint8_t cmd_buf[BUF_SIZE]; 
+extern uint8_t cmd_buf[CMMU_BUF_SIZE]; 
 extern uint8_t cmd_count;
 extern uint8_t flag_heigth;
 extern uint8_t flag_width;
