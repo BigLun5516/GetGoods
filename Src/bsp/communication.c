@@ -14,6 +14,15 @@ double width;
 
 char *end_; // 用于函数 strtod(char*, char**);
 
+void cmmu_reset()
+{
+    cmd_count = 0;
+    flag_heigth = 0;
+    flag_width = 0;
+    flag_get = 0;
+    flag_put = 0;
+    flag_throw = 0;
+}
 
 // DH *.***** !
 void cmmu_receive_data_height(UART_HandleTypeDef *husart)
@@ -68,12 +77,15 @@ void cmmu_receive_cmd_get(UART_HandleTypeDef *husart)
 {
     HAL_UART_Receive(husart, &cmd_buf[cmd_count], 1, 10);
     cmd_count++;
-    if(strstr(cmd_buf, "CGet@")){
+    if (strstr(cmd_buf, "CGet@"))
+    {
         while (laser_send_cmd(husart, "CGet@", "OK", 100))
             ;
         cmd_count = 0;
         flag_get = 1;
-    }else if(cmd_count >= CMMU_BUF_SIZE){
+    }
+    else if (cmd_count >= CMMU_BUF_SIZE)
+    {
         cmd_count = 0;
     }
 }
@@ -82,12 +94,15 @@ void cmmu_receive_cmd_put(UART_HandleTypeDef *husart)
 {
     HAL_UART_Receive(husart, &cmd_buf[cmd_count], 1, 10);
     cmd_count++;
-    if(strstr(cmd_buf, "CPut@")){
+    if (strstr(cmd_buf, "CPut@"))
+    {
         while (laser_send_cmd(husart, "CPut@", "OK", 100))
             ;
         cmd_count = 0;
         flag_put = 1;
-    }else if(cmd_count >= CMMU_BUF_SIZE){
+    }
+    else if (cmd_count >= CMMU_BUF_SIZE)
+    {
         cmd_count = 0;
     }
 }
@@ -96,13 +111,16 @@ void cmmu_receive_cmd_throw(UART_HandleTypeDef *husart)
 {
     HAL_UART_Receive(husart, &cmd_buf[cmd_count], 1, 10);
     cmd_count++;
-    if(strstr(cmd_buf, "CThw@")){
+    if (strstr(cmd_buf, "CThw@"))
+    {
         cmd_buf[cmd_count] = '\0';
         while (laser_send_cmd(husart, "CThw@", "OK", 100))
             ;
         cmd_count = 0;
         flag_throw = 1;
-    }else if(cmd_count >= CMMU_BUF_SIZE){
+    }
+    else if (cmd_count >= CMMU_BUF_SIZE)
+    {
         cmd_count = 0;
     }
 }
