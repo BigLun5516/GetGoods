@@ -12,12 +12,12 @@
         <ByteLimit>50</ByteLimit>
     </Stack>
     <StLinkDriver>
-        <CStepIntDis>_ 0</CStepIntDis>
-        <LeaveTargetRunning>_ 0</LeaveTargetRunning>
-        <stlinkResetStyle>0</stlinkResetStyle>
-        <stlinkResetStrategy>0</stlinkResetStrategy>
         <stlinkserialNo>43140967</stlinkserialNo>
         <stlinkfoundProbes />
+        <stlinkResetStyle>0</stlinkResetStyle>
+        <stlinkResetStrategy>0</stlinkResetStrategy>
+        <CStepIntDis>_ 0</CStepIntDis>
+        <LeaveTargetRunning>_ 0</LeaveTargetRunning>
     </StLinkDriver>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -42,7 +42,7 @@
         <ITMlogFile>$PROJ_DIR$\ITM.log</ITMlogFile>
     </SWOTraceHWSettings>
     <DebugChecksum>
-        <Checksum>3933117998</Checksum>
+        <Checksum>65105796</Checksum>
     </DebugChecksum>
     <CodeCoverage>
         <Enabled>0</Enabled>
@@ -118,6 +118,15 @@
         <ShowTimeSum>1</ShowTimeSum>
         <SumSortOrder>0</SumSortOrder>
     </EventLog>
+    <TermIOLog>
+        <LoggingEnabled>_ 0</LoggingEnabled>
+        <LogFile>_ ""</LogFile>
+    </TermIOLog>
+    <LogFile>
+        <LoggingEnabled>_ 0</LoggingEnabled>
+        <LogFile>_ ""</LogFile>
+        <Category>_ 0</Category>
+    </LogFile>
     <DriverProfiling>
         <Enabled>0</Enabled>
         <Mode>3</Mode>
@@ -135,20 +144,15 @@
         <mode>0</mode>
     </DisassembleMode>
     <Breakpoints2>
-        <Bp0>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main.c}.0.1" 0 0 1 "" 0 "" 0</Bp0>
-        <Bp1>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main.c}.0.1" 0 0 1 "" 0 "" 0</Bp1>
-        <Bp2>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main.c}.0.1" 0 0 1 "" 0 "" 0</Bp2>
+        <Bp0>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main.c}.383.1" 0 0 1 "" 0 "" 0</Bp0>
+        <Bp1>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main.c}.383.1" 0 0 1 "" 0 "" 0</Bp1>
+        <Bp2>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main.c}.383.1" 0 0 1 "" 0 "" 0</Bp2>
         <Bp3>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main.c}.125.5" 0 0 1 "" 0 "" 0</Bp3>
         <Bp4>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main.c}.125.5" 0 0 1 "" 0 "" 0</Bp4>
         <Bp5>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main.c}.125.5" 0 0 1 "" 0 "" 0</Bp5>
         <Bp6>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main.c}.242.9" 0 0 1 "" 0 "" 0</Bp6>
         <Count>7</Count>
     </Breakpoints2>
-    <LogFile>
-        <LoggingEnabled>_ 0</LoggingEnabled>
-        <LogFile>_ ""</LogFile>
-        <Category>_ 0</Category>
-    </LogFile>
     <Aliases>
         <A0>_ "E:\Code\IAR_Projects\GetGoods\Src\bsp\ASDA_B2\bsp_ASDA_B2.c" "E:\Code\IarProjects\GetGoods\Src\bsp\ASDA_B2\bsp_ASDA_B2.c"</A0>
         <A1>_ "E:\Code\IarProjects\GetGoods\Src\bsp\communication.c" "E:\Code\IAR_Projects\GetGoods\Src\bsp\communication.c"</A1>
@@ -156,8 +160,4 @@
         <Count>3</Count>
         <SuppressDialog>0</SuppressDialog>
     </Aliases>
-    <TermIOLog>
-        <LoggingEnabled>_ 0</LoggingEnabled>
-        <LogFile>_ ""</LogFile>
-    </TermIOLog>
 </settings>
