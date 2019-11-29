@@ -83,7 +83,7 @@ int main(void)
     MX_DEBUG_USART_Init();
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // 激光测试
+    //激光测试
     LASER_Init();
     laser_start_measure(LASER1, 2);
     HAL_Delay(500);
@@ -122,14 +122,14 @@ int main(void)
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // 继电器测试
-    // RELAY_Init();
-    
-    // RELAY1_OFF;
-
-    // RELAY2_OFF;
-    // RELAY3_OFF;
-    // RELAY4_OFF;
+    RELAY_Init();
+    // 24 全关：缩
+    // 24 全开：申
+    // push_rod_extend();
+    // push_rod_back();
+    // DCT_ON;
     // DCT_OFF;
+    // while(1);
 
     while(laser_send_cmd(&husart_debug, "CRdyOK@", "CRdyOK", 100));
     HAL_UART_Transmit(&husart_debug, "OK", 2, 1000);
@@ -205,7 +205,7 @@ int main(void)
 
         
         // 收回取货杆
-        
+            // 等待行程开关按下
 
         // 取完货 发个消息
         while (laser_send_cmd(&husart_debug, "CGetOK@", "CGetOK@", 100))
@@ -219,11 +219,9 @@ int main(void)
         }
 
         // 卸货
-        // push_rod_extend();
-        // HAL_Delay(2000); // 等待推杆推到底
-        // push_rod_back();
-        //     // 等待行程开关按下
-        // push_rod_stop();
+        push_rod_extend();
+        HAL_Delay(2000); // 等待推杆推到底
+        push_rod_back();
 
         // 卸完货 发个消息
         while (laser_send_cmd(&husart_debug, "CPutOK@", "CPutOK@", 100))
@@ -242,6 +240,10 @@ int main(void)
         while (laser_send_cmd(&husart_debug, "CThwOK@", "CThwOK@", 100))
             ;
         HAL_UART_Transmit(&husart_debug, "OK", 2, 1000);
+
+        cmmu_reset();
+        
+        while(1);////////////
     }
 }
 
