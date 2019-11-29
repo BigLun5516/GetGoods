@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V8.40.2.214/W32 for ARM                  28/Nov/2019  14:37:45
+# IAR ELF Linker V8.40.2.214/W32 for ARM                  29/Nov/2019  10:57:43
 # Copyright 2007-2019 IAR Systems AB.
 #
 #    Output file  =
@@ -8,7 +8,7 @@
 #    Map file     =
 #        E:\Code\IAR_Projects\GetGoods\EWARM\YS-F1Pro\List\YS-F1Pro.map
 #    Command line =
-#        -f C:\Users\15538\AppData\Local\Temp\EW8FEF.tmp
+#        -f C:\Users\15538\AppData\Local\Temp\EWAB17.tmp
 #        (E:\Code\IAR_Projects\GetGoods\EWARM\YS-F1Pro\Obj\bsp_ASDA_B2.o
 #        E:\Code\IAR_Projects\GetGoods\EWARM\YS-F1Pro\Obj\bsp_debug_usart.o
 #        E:\Code\IAR_Projects\GetGoods\EWARM\YS-F1Pro\Obj\communication.o
@@ -69,9 +69,8 @@
 #        --no_out_extension -o
 #        E:\Code\IAR_Projects\GetGoods\EWARM\YS-F1Pro\Exe\YS-F1Pro.out --map
 #        E:\Code\IAR_Projects\GetGoods\EWARM\YS-F1Pro\List\YS-F1Pro.map
-#        --config "C:\Program Files (x86)\IAR Systems\Embedded Workbench
-#        8.3\arm\config\linker\ST\stm32f103xC.icf" --semihosting --entry
-#        __iar_program_start --vfe --text_out locale)
+#        --config D:\IAR\arm\config\linker\ST\stm32f103xC.icf --semihosting
+#        --entry __iar_program_start --vfe --text_out locale)
 #
 ###############################################################################
 
