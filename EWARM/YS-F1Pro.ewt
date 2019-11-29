@@ -1200,6 +1200,9 @@
                 <name>$PROJ_DIR$\..\Src\bsp\communication.c</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\Src\bsp\key.c</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\Src\bsp\laser.c</name>
             </file>
             <file>

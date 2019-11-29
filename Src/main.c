@@ -8,6 +8,7 @@
 #include "pid.h"
 #include <math.h>
 #include "communication.h"
+#include "key.h"
 
 
 /* 私有类型定义 --------------------------------------------------------------*/
@@ -81,6 +82,18 @@ int main(void)
 
     // /* 初始化串口并配置串口中断优先级 */
     MX_DEBUG_USART_Init();
+
+    //////////////////////
+    // 开关测试
+    key_init();
+    // RELAY_Init();
+    // while(1){
+    //     while(KEY_LEVEL != KEY_ON_LEVEL);
+    //     RELAY5_ON;
+    //     while(KEY_LEVEL == KEY_ON_LEVEL);
+    //     RELAY5_OFF;
+    // }
+    
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //激光测试
@@ -205,7 +218,10 @@ int main(void)
 
         
         // 收回取货杆
-            // 等待行程开关按下
+        motor_set_velocity(-1 * ratedSpd2);
+        // 等待行程开关按下
+        while(KEY_LEVEL != KEY_ON_LEVEL);
+        motor_stop();
 
         // 取完货 发个消息
         while (laser_send_cmd(&husart_debug, "CGetOK@", "CGetOK@", 100))
