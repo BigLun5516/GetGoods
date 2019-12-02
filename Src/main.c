@@ -215,12 +215,15 @@ int main(void)
             }
             HAL_Delay(30);
         }
-
+        
+        // 电磁铁开
+        DCT_ON;
         
         // 收回取货杆
         motor_set_velocity(-1 * ratedSpd2);
         // 等待行程开关按下
-        while(KEY_LEVEL != KEY_ON_LEVEL);
+        //while(KEY_LEVEL != KEY_ON_LEVEL);
+        HAL_Delay(1000);
         motor_stop();
 
         // 取完货 发个消息
@@ -235,8 +238,9 @@ int main(void)
         }
 
         // 卸货
+        //DCT_OFF; // 电磁铁关
         push_rod_extend();
-        HAL_Delay(2000); // 等待推杆推到底
+        //HAL_Delay(2000); // 等待推杆推到底
         push_rod_back();
 
         // 卸完货 发个消息
