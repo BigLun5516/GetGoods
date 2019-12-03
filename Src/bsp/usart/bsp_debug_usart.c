@@ -253,10 +253,10 @@ void RS485_USARTx_Init(void)
   husartx_rs485.Init.OverSampling = UART_OVERSAMPLING_16;
   HAL_UART_Init(&husartx_rs485);
 
-  HAL_NVIC_SetPriority(RS485_USARTX_IRQn, 1, 0);
+  HAL_NVIC_SetPriority(RS485_USARTX_IRQn, 1, 2);
   HAL_NVIC_EnableIRQ(RS485_USARTX_IRQn);
   /* DMA interrupt configuration */
-  HAL_NVIC_SetPriority(RS485_DMAx_CHANNELn_IRQn, 1, 1);
+  HAL_NVIC_SetPriority(RS485_DMAx_CHANNELn_IRQn, 1, 3);
   HAL_NVIC_EnableIRQ(RS485_DMAx_CHANNELn_IRQn);
 }
 

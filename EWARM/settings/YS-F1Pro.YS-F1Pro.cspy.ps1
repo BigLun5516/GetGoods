@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "D:\IAR\common\bin\cspybat" -f "E:\Code\IAR_Projects\GetGoods\EWARM\settings\YS-F1Pro.YS-F1Pro.general.xcl" --backend -f "E:\Code\IAR_Projects\GetGoods\EWARM\settings\YS-F1Pro.YS-F1Pro.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\common\bin\cspybat" -f "E:\Code\IAR_Projects\GetGoods\EWARM\settings\YS-F1Pro.YS-F1Pro.general.xcl" --backend -f "E:\Code\IAR_Projects\GetGoods\EWARM\settings\YS-F1Pro.YS-F1Pro.driver.xcl" 
 }
 else
 {
-& "D:\IAR\common\bin\cspybat" -f "E:\Code\IAR_Projects\GetGoods\EWARM\settings\YS-F1Pro.YS-F1Pro.general.xcl" --debug_file=$debugfile --backend -f "E:\Code\IAR_Projects\GetGoods\EWARM\settings\YS-F1Pro.YS-F1Pro.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\common\bin\cspybat" -f "E:\Code\IAR_Projects\GetGoods\EWARM\settings\YS-F1Pro.YS-F1Pro.general.xcl" --debug_file=$debugfile --backend -f "E:\Code\IAR_Projects\GetGoods\EWARM\settings\YS-F1Pro.YS-F1Pro.driver.xcl" 
 }

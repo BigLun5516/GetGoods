@@ -30,7 +30,7 @@ float Motor_PID1(float set, float now, uint8_t clear)
     if (result < MIN1)
         result = MIN1;
 
-    return -result;
+    return result;
 }
 
 float Motor_PID2(float set, float now, uint8_t clear)

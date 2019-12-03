@@ -15,7 +15,7 @@ float last_last_distance_laser2;
 float distance_filter_laser1;
 float distance_filter_laser2;
 
-const float init_distance_laser2 = 0.165;
+const float init_distance_laser2 = 0.155;
 
 uint8_t buf_laser1[10];
 uint8_t buf_laser2[10];
@@ -70,13 +70,17 @@ void LASER_Init()
     //设置激光1和激光2的量程
     laser_stop_measure(LASER1);
     HAL_Delay(100);
-    laser_stop_measure(LASER2);
-    HAL_Delay(100);
     laser_set_range(LASER1, 10000);
+    HAL_Delay(100);
+    laser_start_measure(LASER1, 2);
+    HAL_Delay(500);
+    
+    laser_stop_measure(LASER2);
     HAL_Delay(100);
     laser_set_range(LASER2, 10000);
     HAL_Delay(100);
-    // laser_set_range(LASER2, 10000);
+    laser_start_measure(LASER2, 2);
+    HAL_Delay(500);
 }
 
 float getDistance(uint8_t LASER)

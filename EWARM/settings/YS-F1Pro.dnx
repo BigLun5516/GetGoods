@@ -42,7 +42,7 @@
         <ITMlogFile>$PROJ_DIR$\ITM.log</ITMlogFile>
     </SWOTraceHWSettings>
     <DebugChecksum>
-        <Checksum>3821376746</Checksum>
+        <Checksum>1924705428</Checksum>
     </DebugChecksum>
     <CodeCoverage>
         <Enabled>0</Enabled>
@@ -68,10 +68,11 @@
         <Fmt0>{W}42:aRxBuffer_motor	4	0</Fmt0>
         <Fmt1>{W}42:cmd_count	3	0</Fmt1>
         <Fmt2>{W}42:flag_get	3	0</Fmt2>
-        <Fmt3>{W}42:flag_heigth	3	0</Fmt3>
-        <Fmt4>{W}42:flag_put	3	0</Fmt4>
-        <Fmt5>{W}42:flag_throw	3	0</Fmt5>
-        <Fmt6>{W}42:flag_width	3	0</Fmt6>
+        <Fmt3>{W}42:flag_height_speed	3	0</Fmt3>
+        <Fmt4>{W}42:flag_heigth	3	0</Fmt4>
+        <Fmt5>{W}42:flag_put	3	0</Fmt5>
+        <Fmt6>{W}42:flag_throw	3	0</Fmt6>
+        <Fmt7>{W}42:flag_width	3	0</Fmt7>
     </watch_formats>
     <Trace2>
         <Enabled>0</Enabled>
@@ -144,20 +145,17 @@
         <mode>0</mode>
     </DisassembleMode>
     <Breakpoints2>
-        <Bp0>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main.c}.384.9" 0 0 1 "" 0 "" 0</Bp0>
-        <Bp1>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main.c}.384.9" 0 0 1 "" 0 "" 0</Bp1>
-        <Bp2>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main.c}.384.9" 0 0 1 "" 0 "" 0</Bp2>
-        <Bp3>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main.c}.272.5" 0 0 1 "" 0 "" 0</Bp3>
-        <Bp4>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main.c}.272.5" 0 0 1 "" 0 "" 0</Bp4>
-        <Bp5>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main.c}.272.5" 0 0 1 "" 0 "" 0</Bp5>
-        <Bp6>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main.c}.272.5" 0 0 1 "" 0 "" 0</Bp6>
-        <Count>7</Count>
+        <Bp0>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main.c}.392.13" 0 0 1 "" 0 "" 0</Bp0>
+        <Bp1>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main.c}.392.13" 0 0 1 "" 0 "" 0</Bp1>
+        <Bp2>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main.c}.392.13" 0 0 1 "" 0 "" 0</Bp2>
+        <Count>3</Count>
     </Breakpoints2>
     <Aliases>
-        <A0>_ "E:\Code\IAR_Projects\GetGoods\Src\bsp\ASDA_B2\bsp_ASDA_B2.c" "E:\Code\IarProjects\GetGoods\Src\bsp\ASDA_B2\bsp_ASDA_B2.c"</A0>
-        <A1>_ "E:\Code\IarProjects\GetGoods\Src\bsp\communication.c" "E:\Code\IAR_Projects\GetGoods\Src\bsp\communication.c"</A1>
-        <A2>_ "E:\Code\IarProjects\GetGoods\Src\bsp\laser.c" "E:\Code\IAR_Projects\GetGoods\Src\bsp\laser.c"</A2>
-        <Count>3</Count>
+        <A0>_ "D:\IAR\arm\inc\c\cmsis_iar.h" "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\arm\inc\c\cmsis_iar.h"</A0>
+        <A1>_ "E:\Code\IAR_Projects\GetGoods\Src\bsp\ASDA_B2\bsp_ASDA_B2.c" "E:\Code\IarProjects\GetGoods\Src\bsp\ASDA_B2\bsp_ASDA_B2.c"</A1>
+        <A2>_ "E:\Code\IarProjects\GetGoods\Src\bsp\communication.c" "E:\Code\IAR_Projects\GetGoods\Src\bsp\communication.c"</A2>
+        <A3>_ "E:\Code\IarProjects\GetGoods\Src\bsp\laser.c" "E:\Code\IAR_Projects\GetGoods\Src\bsp\laser.c"</A3>
+        <Count>4</Count>
         <SuppressDialog>0</SuppressDialog>
     </Aliases>
 </settings>

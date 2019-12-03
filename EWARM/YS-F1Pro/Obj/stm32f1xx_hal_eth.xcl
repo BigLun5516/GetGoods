@@ -22,9 +22,9 @@ E:\Code\IAR_Projects\GetGoods\EWARM/../Drivers/CMSIS/Device/ST/STM32F1xx/Include
 -I
 E:\Code\IAR_Projects\GetGoods\EWARM\..\Inc\bsp
 -I
-D:\IAR\arm\inc
+C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\arm\inc
 -I
-D:\IAR\arm\inc\c
+C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\arm\inc\c
 -I
 E:\Code\IAR_Projects\GetGoods\Inc
 -I
@@ -314,8 +314,8 @@ E:\Code\IAR_Projects\GetGoods\Inc\bsp
 -D__EDG_INT128_EXTENSIONS_ALLOWED=0
 -DUSE_HAL_DRIVER=1
 -DSTM32F103xE=1
--D_DLIB_CONFIG_FILE_HEADER_NAME="D:\\IAR\\arm\\inc\\c\\DLib_Config_Full.h"
--D_DLIB_CONFIG_FILE_STRING="D:\\IAR\\arm\\inc\\c\\DLib_Config_Full.h"
+-D_DLIB_CONFIG_FILE_HEADER_NAME="C:\\Program Files (x86)\\IAR Systems\\Embedded Workbench 8.3\\arm\\inc\\c\\DLib_Config_Full.h"
+-D_DLIB_CONFIG_FILE_STRING="C:\\Program Files (x86)\\IAR Systems\\Embedded Workbench 8.3\\arm\\inc\\c\\DLib_Config_Full.h"
 -D__VERSION__="IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM"
 -D_VA_DEFINED=
 -D_VA_LIST=struct __va_list
