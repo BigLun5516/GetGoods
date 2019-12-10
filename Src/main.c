@@ -253,8 +253,7 @@ int main(void)
         // 收回取货杆
         motor_set_velocity(-1 * ratedSpd2);
         // 等待行程开关按下
-        //while(KEY_LEVEL != KEY_ON_LEVEL);
-        HAL_Delay(2000);
+        while(KEY_LEVEL != KEY_ON_LEVEL);
         motor_stop();
 
         // 取完货 发个消息
@@ -294,7 +293,7 @@ int main(void)
             HAL_Delay(20);
         }
         push_rod_extend();
-        //HAL_Delay(2000); // 等待推杆推到底
+        HAL_Delay(2000); // 等待推杆推到底
         push_rod_back();
 
         // 卸完货 发个消息
