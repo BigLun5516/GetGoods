@@ -12,12 +12,12 @@
         <ByteLimit>50</ByteLimit>
     </Stack>
     <StLinkDriver>
-        <stlinkserialNo>43140967</stlinkserialNo>
+        <stlinkserialNo>23492143</stlinkserialNo>
         <stlinkfoundProbes />
-        <stlinkResetStyle>0</stlinkResetStyle>
-        <stlinkResetStrategy>0</stlinkResetStrategy>
         <CStepIntDis>_ 0</CStepIntDis>
         <LeaveTargetRunning>_ 0</LeaveTargetRunning>
+        <stlinkResetStyle>0</stlinkResetStyle>
+        <stlinkResetStrategy>0</stlinkResetStrategy>
     </StLinkDriver>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -42,7 +42,7 @@
         <ITMlogFile>$PROJ_DIR$\ITM.log</ITMlogFile>
     </SWOTraceHWSettings>
     <DebugChecksum>
-        <Checksum>1924705428</Checksum>
+        <Checksum>3934284698</Checksum>
     </DebugChecksum>
     <CodeCoverage>
         <Enabled>0</Enabled>
@@ -119,6 +119,15 @@
         <ShowTimeSum>1</ShowTimeSum>
         <SumSortOrder>0</SumSortOrder>
     </EventLog>
+    <DisassembleMode>
+        <mode>0</mode>
+    </DisassembleMode>
+    <Breakpoints2>
+        <Bp0>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main.c}.403.13" 0 0 1 "" 0 "" 0</Bp0>
+        <Bp1>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main.c}.403.13" 0 0 1 "" 0 "" 0</Bp1>
+        <Bp2>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main.c}.403.13" 0 0 1 "" 0 "" 0</Bp2>
+        <Count>3</Count>
+    </Breakpoints2>
     <TermIOLog>
         <LoggingEnabled>_ 0</LoggingEnabled>
         <LogFile>_ ""</LogFile>
@@ -128,6 +137,14 @@
         <LogFile>_ ""</LogFile>
         <Category>_ 0</Category>
     </LogFile>
+    <Aliases>
+        <A0>_ "D:\IAR\arm\inc\c\cmsis_iar.h" "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\arm\inc\c\cmsis_iar.h"</A0>
+        <A1>_ "E:\Code\IAR_Projects\GetGoods\Src\bsp\ASDA_B2\bsp_ASDA_B2.c" "E:\Code\IarProjects\GetGoods\Src\bsp\ASDA_B2\bsp_ASDA_B2.c"</A1>
+        <A2>_ "E:\Code\IarProjects\GetGoods\Src\bsp\communication.c" "E:\Code\IAR_Projects\GetGoods\Src\bsp\communication.c"</A2>
+        <A3>_ "E:\Code\IarProjects\GetGoods\Src\bsp\laser.c" "E:\Code\IAR_Projects\GetGoods\Src\bsp\laser.c"</A3>
+        <Count>4</Count>
+        <SuppressDialog>0</SuppressDialog>
+    </Aliases>
     <DriverProfiling>
         <Enabled>0</Enabled>
         <Mode>3</Mode>
@@ -141,21 +158,4 @@
     <CallStackStripe>
         <ShowTiming>1</ShowTiming>
     </CallStackStripe>
-    <DisassembleMode>
-        <mode>0</mode>
-    </DisassembleMode>
-    <Breakpoints2>
-        <Bp0>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main.c}.392.13" 0 0 1 "" 0 "" 0</Bp0>
-        <Bp1>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main.c}.392.13" 0 0 1 "" 0 "" 0</Bp1>
-        <Bp2>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\main.c}.392.13" 0 0 1 "" 0 "" 0</Bp2>
-        <Count>3</Count>
-    </Breakpoints2>
-    <Aliases>
-        <A0>_ "D:\IAR\arm\inc\c\cmsis_iar.h" "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\arm\inc\c\cmsis_iar.h"</A0>
-        <A1>_ "E:\Code\IAR_Projects\GetGoods\Src\bsp\ASDA_B2\bsp_ASDA_B2.c" "E:\Code\IarProjects\GetGoods\Src\bsp\ASDA_B2\bsp_ASDA_B2.c"</A1>
-        <A2>_ "E:\Code\IarProjects\GetGoods\Src\bsp\communication.c" "E:\Code\IAR_Projects\GetGoods\Src\bsp\communication.c"</A2>
-        <A3>_ "E:\Code\IarProjects\GetGoods\Src\bsp\laser.c" "E:\Code\IAR_Projects\GetGoods\Src\bsp\laser.c"</A3>
-        <Count>4</Count>
-        <SuppressDialog>0</SuppressDialog>
-    </Aliases>
 </settings>

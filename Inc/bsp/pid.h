@@ -11,7 +11,8 @@
 #define MIN2 -ratedSpd2 //限制最小转速
 
 #define crtDistance 0.06 // 安全距离
-#define allowedError 0.01
+#define allowedError 0.02 // 上下移动误差
+#define allowedError2 0.01 // 取货杆伸缩误差
 
 extern float Motor_PID1(float set, float now, uint8_t clear); //线性模组 电机
 extern float Motor_PID2(float set, float now, uint8_t clear); //取货杆 小电机

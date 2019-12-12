@@ -15,7 +15,7 @@ float last_last_distance_laser2;
 float distance_filter_laser1;
 float distance_filter_laser2;
 
-const float init_distance_laser2 = 0.155;
+const float init_distance_laser2 = 0.18;
 
 uint8_t buf_laser1[10];
 uint8_t buf_laser2[10];

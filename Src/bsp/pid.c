@@ -53,5 +53,5 @@ float Motor_PID2(float set, float now, uint8_t clear)
     if (result < MIN2)
         result = MIN2;
 
-    return -result;
+    return result;
 }
