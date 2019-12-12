@@ -82,14 +82,13 @@ int main(void)
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // 继电器测试
     RELAY_Init();
-    HAL_Delay(3000);
     // 24 全关：缩
     // 24 全开：申
-    // push_rod_extend();
-    // push_rod_back();
-    // DCT_ON;
+    DCT_ON;
+    push_rod_extend();
+    push_rod_back();
     // DCT_OFF;
-    // while(1);
+    while(1);
 
     // /* 初始化串口并配置串口中断优先级 */
     MX_DEBUG_USART_Init();
@@ -97,10 +96,12 @@ int main(void)
     //////////////////////
     // 开关测试
     key_init();
+    // while(KEY_LEVEL != KEY_ON_LEVEL);
+    // RELAY5_ON;
+    // while(1);
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //激光测试
-
     LASER_Init();
     HAL_UART_Receive_IT(&husart_laser1, &aRxBuffer_laser1, 1); // 激光1的串口 开中断
     HAL_UART_Receive_IT(&husart_laser2, &aRxBuffer_laser2, 1); // 激光2的串口 开中断
