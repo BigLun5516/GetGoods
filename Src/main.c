@@ -84,11 +84,11 @@ int main(void)
     RELAY_Init();
     // 24 全关：缩
     // 24 全开：申
-    DCT_ON;
-    push_rod_extend();
-    push_rod_back();
-    // DCT_OFF;
-    while(1);
+    // DCT_ON;
+    // push_rod_extend();
+    // push_rod_back();
+    // // DCT_OFF;
+    // while(1);
 
     // /* 初始化串口并配置串口中断优先级 */
     MX_DEBUG_USART_Init();
@@ -139,32 +139,28 @@ int main(void)
     HAL_Delay(500);
 
 
-    // while(laser_send_cmd(&husart_debug, "CRdyOK@", "CRdyOK", 100));
-    HAL_UART_Transmit(&husart_debug, "OK", 2, 1000);
-
-    height = 0.58; ///////
-    width = 0.08;  ////////
+    while(laser_send_cmd(&husart_debug, "CRdyOK@", "CRdyOK@", 100));
 
     /* 无限循环 */
     while (1)
     {
         // 接收 物品高度
-        // while (!flag_heigth)
-        // {
-        //     cmmu_receive_data_height(&husart_debug);
-        // }
+        while (!flag_heigth)
+        {
+            cmmu_receive_data_height(&husart_debug);
+        }
 
-        // // 接收 托盘宽度
-        // while (!flag_width)
-        // {
-        //     cmmu_receive_data_width(&husart_debug);
-        // }
+        // 接收 托盘宽度
+        while (!flag_width)
+        {
+            cmmu_receive_data_width(&husart_debug);
+        }
 
-        // // 接收 开始取货的命令
-        // while (!flag_get)
-        // {
-        //     cmmu_receive_cmd_get(&husart_debug);
-        // }
+        // 接收 开始取货的命令
+        while (!flag_get)
+        {
+            cmmu_receive_cmd_get(&husart_debug);
+        }
 
         // 移动到 物品高度
         static uint8_t flag_height_speed = 0; ////
@@ -257,15 +253,16 @@ int main(void)
         motor_stop();
 
         // 取完货 发个消息
-        // while (laser_send_cmd(&husart_debug, "CGetOK@", "CGetOK@", 100))
-        //     ;
-        // HAL_UART_Transmit(&husart_debug, "OK", 2, 1000);
+        while (laser_send_cmd(&husart_debug, "CGetOK@", "CGetOK@", 100))
+            ;
+        HAL_Delay(10);
+        HAL_UART_Transmit(&husart_debug, "OK", 2, 1000);
 
-        // // 接收 卸货的命令
-        // while (!flag_put)
-        // {
-        //     cmmu_receive_cmd_put(&husart_debug);
-        // }
+        // 接收 卸货的命令
+        while (!flag_put)
+        {
+            cmmu_receive_cmd_put(&husart_debug);
+        }
 
         // 卸货
         // 移动到 卸货高度
@@ -298,19 +295,17 @@ int main(void)
         HAL_Delay(1000); // 等待推杆推到底
         push_rod_back();
 
-        // // 卸完货 发个消息
-        // while (laser_send_cmd(&husart_debug, "CPutOK@", "CPutOK@", 100))
-        //     ;
-        // HAL_UART_Transmit(&husart_debug, "OK", 2, 1000);
-        HAL_Delay(1000);/////
-        HAL_Delay(1000);/////
-        HAL_Delay(1000);/////
+        // 卸完货 发个消息
+        while (laser_send_cmd(&husart_debug, "CPutOK@", "CPutOK@", 100))
+            ;
+        HAL_Delay(10);
+        HAL_UART_Transmit(&husart_debug, "OK", 2, 1000);
 
         // 接收 扔掉托盘的命令
-        // while (!flag_throw)
-        // {
-        //     cmmu_receive_cmd_throw(&husart_debug);
-        // }
+        while (!flag_throw)
+        {
+            cmmu_receive_cmd_throw(&husart_debug);
+        }
 
         // 扔掉托盘
         DCT_OFF; // 电磁铁关
@@ -318,6 +313,7 @@ int main(void)
         // 扔完货 发个消息
         while (laser_send_cmd(&husart_debug, "CThwOK@", "CThwOK@", 100))
             ;
+        HAL_Delay(10);
         HAL_UART_Transmit(&husart_debug, "OK", 2, 1000);
 
         cmmu_reset();
