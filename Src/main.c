@@ -255,8 +255,6 @@ int main(void)
         // 取完货 发个消息
         while (laser_send_cmd(&husart_debug, "CGetOK@", "CGetOK@", 100))
             ;
-        HAL_Delay(10);
-        HAL_UART_Transmit(&husart_debug, "OK", 2, 1000);
 
         // 接收 卸货的命令
         while (!flag_put)
@@ -298,8 +296,6 @@ int main(void)
         // 卸完货 发个消息
         while (laser_send_cmd(&husart_debug, "CPutOK@", "CPutOK@", 100))
             ;
-        HAL_Delay(10);
-        HAL_UART_Transmit(&husart_debug, "OK", 2, 1000);
 
         // 接收 扔掉托盘的命令
         while (!flag_throw)
@@ -313,8 +309,6 @@ int main(void)
         // 扔完货 发个消息
         while (laser_send_cmd(&husart_debug, "CThwOK@", "CThwOK@", 100))
             ;
-        HAL_Delay(10);
-        HAL_UART_Transmit(&husart_debug, "OK", 2, 1000);
 
         cmmu_reset();
 
