@@ -97,6 +97,7 @@ void cmmu_receive_data_width(UART_HandleTypeDef *husart)
 // CGet@
 void cmmu_receive_cmd_get(UART_HandleTypeDef *husart)
 {
+    memset(cmd_buf, 48, CMMU_BUF_SIZE);
     while (flag_get != 1)
     {
         HAL_UART_Receive(husart, &cmd_buf[cmd_count], 1, 10);
@@ -112,12 +113,14 @@ void cmmu_receive_cmd_get(UART_HandleTypeDef *husart)
         else if (cmd_count >= CMMU_BUF_SIZE)
         {
             cmd_count = 0;
+            memset(cmd_buf, 48, CMMU_BUF_SIZE);
         }
     }
 }
 
 void cmmu_receive_cmd_put(UART_HandleTypeDef *husart)
 {
+    memset(cmd_buf, 48, CMMU_BUF_SIZE);
     while (flag_put != 1)
     {
         HAL_UART_Receive(husart, &cmd_buf[cmd_count], 1, 10);
@@ -132,6 +135,7 @@ void cmmu_receive_cmd_put(UART_HandleTypeDef *husart)
         }
         else if (cmd_count >= CMMU_BUF_SIZE)
         {
+            memset(cmd_buf, 48, CMMU_BUF_SIZE);
             cmd_count = 0;
         }
     }
@@ -139,6 +143,7 @@ void cmmu_receive_cmd_put(UART_HandleTypeDef *husart)
 
 void cmmu_receive_cmd_throw(UART_HandleTypeDef *husart)
 {
+    memset(cmd_buf, 48, CMMU_BUF_SIZE);
     while (flag_throw != 1)
     {
         HAL_UART_Receive(husart, &cmd_buf[cmd_count], 1, 10);
@@ -154,6 +159,7 @@ void cmmu_receive_cmd_throw(UART_HandleTypeDef *husart)
         }
         else if (cmd_count >= CMMU_BUF_SIZE)
         {
+            memset(cmd_buf, 48, CMMU_BUF_SIZE);
             cmd_count = 0;
         }
     }
