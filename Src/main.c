@@ -312,8 +312,6 @@ int main(void)
 
         cmmu_reset();
 
-        while (1)
-            ; ////////////
     }
 }
 

@@ -1065,7 +1065,7 @@
                     <item>flag_put</item>
                     <item>flag_throw</item>
                     <item>flag_height_speed</item>
-                    <item></item>
+                    <item />
                 </expressions>
                 <col-names>
                     <item>Expression</item>
