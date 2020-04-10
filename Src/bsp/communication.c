@@ -22,6 +22,7 @@ void cmmu_reset()
     flag_get = 0;
     flag_put = 0;
     flag_throw = 0;
+    flag_lod = 0;
 }
 
 // DH *.***** !
@@ -163,4 +164,42 @@ void cmmu_receive_cmd_throw(UART_HandleTypeDef *husart)
             cmd_count = 0;
         }
     }
+}
+
+// ??0 ?? ??????
+// ??1 ?? ??????
+uint8_t cmmu_receive_cmd_put_or_load(UART_HandleTypeDef* husart){
+    memset(cmd_buf, 48, CMMU_BUF_SIZE);
+    while (flag_put != 1 && flag_lod != 1)
+    {
+        HAL_UART_Receive(husart, &cmd_buf[cmd_count], 1, 10);
+        cmd_count++;
+        if (strstr(cmd_buf, "Put@"))
+        {
+            cmd_buf[cmd_count] = '\0';
+            HAL_UART_Transmit(husart, "Put@", 5, 1000);
+            HAL_UART_Transmit(husart, "Put@", 5, 1000);
+            HAL_UART_Transmit(husart, "Put@", 5, 1000);
+            cmd_count = 0;
+            flag_put = 1;
+            return 0;
+        }
+        if (strstr(cmd_buf, "CLod@"))
+        {
+            cmd_buf[cmd_count] = '\0';
+            HAL_UART_Transmit(husart, "CLod@", 5, 1000);
+            HAL_UART_Transmit(husart, "CLod@", 5, 1000);
+            HAL_UART_Transmit(husart, "CLod@", 5, 1000);
+            cmd_count = 0;
+            flag_lod = 1;
+            return 1;
+        }
+        else if (cmd_count >= CMMU_BUF_SIZE)
+        {
+            memset(cmd_buf, 48, CMMU_BUF_SIZE);
+            cmd_count = 0;
+        }
+    }  
+
+    return 0; // ??????????
 }

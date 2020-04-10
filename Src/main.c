@@ -138,14 +138,14 @@ int main(void)
     motor_entry_velocity_mode();
     HAL_Delay(500);
 
-
-    while(laser_send_cmd(&husart_debug, "CRdyOK@", "CRdyOK@", 100));
+    while (laser_send_cmd(&husart_debug, "CRdyOK@", "CRdyOK@", 100))
+        ;
 
     /* 无限循环 */
     while (1)
     {
         // 接收 物品高度
-        while (!flag_heigth)
+        while (!flag_height)
         {
             cmmu_receive_data_height(&husart_debug);
         }
@@ -200,7 +200,7 @@ int main(void)
         {
             distance_filter_laser2 = distance_laser2 * (1 - filter) + last_distance_laser2 * filter;
             if ((distance_filter_laser2 - (init_distance_laser2 - width / 2)) > crtDistance) //控制策略选择
-                setSpd = -1* ratedSpd2;
+                setSpd = -1 * ratedSpd2;
             else if ((distance_filter_laser2 - (init_distance_laser2 - width / 2)) < (-1 * crtDistance)) //控制策略选择
                 setSpd = ratedSpd2;
             else if (fabs(distance_filter_laser2 - (init_distance_laser2 - width / 2)) <= crtDistance)
@@ -249,7 +249,8 @@ int main(void)
         // 收回取货杆
         motor_set_velocity(ratedSpd2);
         // 等待行程开关按下
-        while(KEY_LEVEL != KEY_ON_LEVEL);
+        while (KEY_LEVEL != KEY_ON_LEVEL)
+            ;
         motor_stop();
 
         // 取完货 发个消息
@@ -257,61 +258,114 @@ int main(void)
             ;
 
         // 接收 卸货的命令
-        while (!flag_put)
+        while (!flag_put && !flag_lod)
         {
-            cmmu_receive_cmd_put(&husart_debug);
+            cmmu_receive_cmd_put_or_lod(&husart_debug);
         }
 
-        // 卸货
-        // 移动到 卸货高度
-        height = 1;
-        while (1)
+        if (flag_put)
         {
-            distance_filter_laser1 = distance_laser1 * (1 - filter) + last_distance_laser1 * filter;
-            if ((distance_filter_laser1 - height) > crtDistance) //控制策略选择
-                setSpd = -ratedSpd1;
-            else if ((distance_filter_laser1 - height) < (-1 * crtDistance)) //控制策略选择
-                setSpd = 1 * ratedSpd1;
-            else if (fabs(distance_filter_laser1 - height) <= crtDistance)
-                setSpd = Motor_PID1(height, distance_filter_laser1, 0);
-            SetSpeed(REG_SP3, setSpd);
-
-            if ((fabs(distance_laser1 - height) < allowedError) &&
-                (fabs(last_distance_laser1 - height) < allowedError) &&
-                (fabs(last_last_distance_laser1 - height) < allowedError)) //连续三帧满足误差范围要求进行下一步
+            // 卸货
+            // 移动到 卸货高度
+            height = 1;
+            while (1)
             {
-                SetSpeed(REG_SP3, 0); //停止电机
-                setSpd = 0;
-                Motor_PID1(0, 0, 1); //清除历史值
-                break;
+                distance_filter_laser1 = distance_laser1 * (1 - filter) + last_distance_laser1 * filter;
+                if ((distance_filter_laser1 - height) > crtDistance) //控制策略选择
+                    setSpd = -ratedSpd1;
+                else if ((distance_filter_laser1 - height) < (-1 * crtDistance)) //控制策略选择
+                    setSpd = 1 * ratedSpd1;
+                else if (fabs(distance_filter_laser1 - height) <= crtDistance)
+                    setSpd = Motor_PID1(height, distance_filter_laser1, 0);
+                SetSpeed(REG_SP3, setSpd);
+
+                if ((fabs(distance_laser1 - height) < allowedError) &&
+                    (fabs(last_distance_laser1 - height) < allowedError) &&
+                    (fabs(last_last_distance_laser1 - height) < allowedError)) //连续三帧满足误差范围要求进行下一步
+                {
+                    SetSpeed(REG_SP3, 0); //停止电机
+                    setSpd = 0;
+                    Motor_PID1(0, 0, 1); //清除历史值
+                    break;
+                }
+                HAL_Delay(20);
             }
-            HAL_Delay(20);
+            push_rod_extend();
+            HAL_Delay(1000); // 等待推杆推到底
+            HAL_Delay(1000); // 等待推杆推到底
+            HAL_Delay(1000); // 等待推杆推到底
+            push_rod_back();
+
+            // 卸完货 发个消息
+            while (laser_send_cmd(&husart_debug, "CPutOK@", "CPutOK@", 100))
+                ;
+
+            // 接收 扔掉托盘的命令
+            while (!flag_throw)
+            {
+                cmmu_receive_cmd_throw(&husart_debug);
+            }
+
+            // 扔掉托盘
+            DCT_OFF; // 电磁铁关
+
+            // 扔完货 发个消息
+            while (laser_send_cmd(&husart_debug, "CThwOK@", "CThwOK@", 100))
+                ;
         }
-        push_rod_extend();
-        HAL_Delay(1000); // 等待推杆推到底
-        HAL_Delay(1000); // 等待推杆推到底
-        HAL_Delay(1000); // 等待推杆推到底
-        push_rod_back();
-
-        // 卸完货 发个消息
-        while (laser_send_cmd(&husart_debug, "CPutOK@", "CPutOK@", 100))
-            ;
-
-        // 接收 扔掉托盘的命令
-        while (!flag_throw)
+        else
         {
-            cmmu_receive_cmd_throw(&husart_debug);
+            // 上货
+            flag_height = 0;
+            cmmu_receive_data_height(&husart_debug);
+
+            height += 0.04; //取货杆上抬一点点
+
+            motor_set_velocity(-1 * ratedSpd2); // 伸出取货杆
+
+            HAL_Delay(500);
+
+            motor_stop();
+
+            // 关闭电磁铁
+            DCT_OFF;
+
+            // 取货杆下降一些
+            height -= 0.06;
+            while (1)
+            {
+                distance_filter_laser1 = distance_laser1 * (1 - filter) + last_distance_laser1 * filter;
+                if ((distance_filter_laser1 - height) > crtDistance) //控制策略选择
+                    setSpd = -ratedSpd1;
+                else if ((distance_filter_laser1 - height) < (-1 * crtDistance)) //控制策略选择
+                    setSpd = 1 * ratedSpd1;
+                else if (fabs(distance_filter_laser1 - height) <= crtDistance)
+                    setSpd = Motor_PID1(height, distance_filter_laser1, 0);
+                SetSpeed(REG_SP3, setSpd);
+
+                if ((fabs(distance_laser1 - height) < allowedError) &&
+                    (fabs(last_distance_laser1 - height) < allowedError) &&
+                    (fabs(last_last_distance_laser1 - height) < allowedError)) //连续三帧满足误差范围要求进行下一步
+                {
+                    SetSpeed(REG_SP3, 0); //停止电机
+                    setSpd = 0;
+                    Motor_PID1(0, 0, 1); //清除历史值
+                    break;
+                }
+                HAL_Delay(20);
+            }
+
+            // 收回取货杆
+            motor_set_velocity(ratedSpd2);
+            while (KEY_LEVEL != KEY_ON_LEVEL) // 等待行程开关按下
+                ;
+            motor_stop();
+
+            // 告知主控上货完成
+            while (laser_send_cmd(&husart_debug, "CLodOK@", "CLodOK@", 100))
+                ;
         }
-
-        // 扔掉托盘
-        DCT_OFF; // 电磁铁关
-
-        // 扔完货 发个消息
-        while (laser_send_cmd(&husart_debug, "CThwOK@", "CThwOK@", 100))
-            ;
-
         cmmu_reset();
-
     }
 }
 
